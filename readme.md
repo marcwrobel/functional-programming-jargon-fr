@@ -25,7 +25,7 @@ __Traductions__
 __Table des matières__
 <!-- RM(noparent,notop) -->
 
-* [Arity](#arity)
+* [Arité](#arité)
 * [Higher-Order Functions (HOF)](#higher-order-functions-hof)
 * [Closure](#closure)
 * [Partial Application](#partial-application)
@@ -86,22 +86,22 @@ __Table des matières__
 
 <!-- /RM -->
 
-## Arity
+## Arité
 
-The number of arguments a function takes. From words like unary, binary, ternary, etc. 
+Le nombre d'arguments qu'une fonction requiert. On utilise aussi des mots comme unaire, binaire, ternaire, etc.
 
 ```js
-const sum = (a, b) => a + b
-// The arity of sum is 2 (binary)
+const somme = (a, b) => a + b
+// L'arité de somme est 2 (binaire)
 const inc = a => a + 1
-// The arity of inc is 1 (unary)
+// L'arité de inc est 1 (unaire)
 const zero = () => 0
-// The arity of zero is 0 (nullary)
+// L'arité de zero est 0 (nullaires)
 ```
 
-__Further reading__
+__Pour aller plus loin__
 
-* [Arity](https://en.wikipedia.org/wiki/Arity) on wikipedia.
+* [Arité](https://fr.wikipedia.org/wiki/Arit%C3%A9) sur Wikipédia.
 
 ## Higher-Order Functions (HOF)
 
