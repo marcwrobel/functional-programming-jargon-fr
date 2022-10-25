@@ -11,5 +11,6 @@ Le contenu de ce dépôt se base sur le commit
 
 # Conventions
 
-- Les acronymes doivent être francisés.
+- Les acronymes doivent être francisés ou supprimés.
+- Les blocs de code doivent être francisés.
 - Les liens doivent être, dans la mesure du possible, remplacés par des liens en français.

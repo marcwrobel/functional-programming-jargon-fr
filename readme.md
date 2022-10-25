@@ -26,7 +26,7 @@ __Table des matières__
 <!-- RM(noparent,notop) -->
 
 * [Arité](#arité)
-* [Higher-Order Functions (HOF)](#higher-order-functions-hof)
+* [Fonction d'ordre supérieur](#fonction-dordre-supérieur)
 * [Closure](#closure)
 * [Partial Application](#partial-application)
 * [Currying](#currying)
@@ -103,20 +103,20 @@ __Pour aller plus loin__
 
 * [Arité](https://fr.wikipedia.org/wiki/Arit%C3%A9) sur Wikipédia.
 
-## Higher-Order Functions (HOF)
+## Fonction d'ordre supérieur
 
-A function which takes a function as an argument and/or returns a function.
+Une fonction qui prend une fonction en argument et/ou qui renvoie une fonction.
 
 ```js
-const filter = (predicate, xs) => xs.filter(predicate)
+const filtre = (predicat, xs) => xs.filter(predicat)
 ```
 
 ```js
-const is = (type) => (x) => Object(x) instanceof type
+const est = (type) => (x) => Object(x) instanceof type
 ```
 
 ```js
-filter(is(Number), [0, '1', 2, null]) // [0, 2]
+filtre(est(Number), [0, '1', 2, null]) // [0, 2]
 ```
 
 ## Closure
