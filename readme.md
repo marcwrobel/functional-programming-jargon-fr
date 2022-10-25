@@ -1,26 +1,28 @@
-# Functional Programming Jargon
+# Le jargon de la programmation fonctionnelle
 
-Functional programming (FP) provides many advantages, and its popularity has been increasing as a result. However, each programming paradigm comes with its own unique jargon and FP is no exception. By providing a glossary, we hope to make learning FP easier.
+> Ce document est une traduction française de [hemanth/functional-programming-jargon](https://github.com/hemanth/functional-programming-jargon).
 
-Examples are presented in JavaScript (ES2015). [Why JavaScript?](https://github.com/hemanth/functional-programming-jargon/wiki/Why-JavaScript%3F)
+La programmation fonctionnelle (PF) offre de nombreux avantages et sa popularité n'a cessé d'augmenter en conséquence. Cependant, chaque paradigme de programmation défini son propre jargon et la PF ne fait pas exception. En fournissant un glossaire, nous espérons faciliter l'apprentissage de la PF.
 
-Where applicable, this document uses terms defined in the [Fantasy Land spec](https://github.com/fantasyland/fantasy-land)
+Les exemples sont écrits en JavaScript (ES2015). [Pourquoi JavaScript ?](https://github.com/hemanth/functional-programming-jargon/wiki/Why-JavaScript%3F)
 
-__Translations__
-* [Portuguese](https://github.com/alexmoreno/jargoes-programacao-funcional)
-* [Spanish](https://github.com/idcmardelplata/functional-programming-jargon/tree/master)
-* [Chinese](https://github.com/shfshanyue/fp-jargon-zh)
-* [Bahasa Indonesia](https://github.com/wisn/jargon-pemrograman-fungsional)
-* [Python World](https://github.com/jmesyou/functional-programming-jargon.py)
-* [Scala World](https://github.com/ikhoon/functional-programming-jargon.scala)
-* [Rust World](https://github.com/JasonShin/functional-programming-jargon.rs)
-* [Korean](https://github.com/sphilee/functional-programming-jargon)
-* [Polish](https://github.com/Deloryn/functional-programming-jargon)
-* [Haskell Turkish](https://github.com/mrtkp9993/functional-programming-jargon)
-* [Haskell Russian](https://github.com/epogrebnyak/functional-programming-jargon)
-* [Julia World](https://github.com/Moelf/functional-programming-jargon.jl)
+Lorsque cela est possible, ce document utilise les termes définis dans la [spécification Fantasy Land](https://github.com/fantasyland/fantasy-land).
 
-__Table of Contents__
+__Traductions__
+* [Portugaise](https://github.com/alexmoreno/jargoes-programacao-funcional)
+* [Espagnole](https://github.com/idcmardelplata/functional-programming-jargon/tree/master)
+* [Chinoise](https://github.com/shfshanyue/fp-jargon-zh)
+* [Indonésienne](https://github.com/wisn/jargon-pemrograman-fungsional)
+* [Anglaise (exemples en Python)](https://github.com/jmesyou/functional-programming-jargon.py)
+* [Anglaise (exemples en Scala)](https://github.com/ikhoon/functional-programming-jargon.scala)
+* [Anglaise (exemples en Rust)](https://github.com/JasonShin/functional-programming-jargon.rs)
+* [Coréenne](https://github.com/sphilee/functional-programming-jargon)
+* [Polonaise](https://github.com/Deloryn/functional-programming-jargon)
+* [Turque (exemples en Haskell)](https://github.com/mrtkp9993/functional-programming-jargon)
+* [Russe (exemples en Haskell)](https://github.com/epogrebnyak/functional-programming-jargon)
+* [Anglaise (exemples en Julia)](https://github.com/Moelf/functional-programming-jargon.jl)
+
+__Table des matières__
 <!-- RM(noparent,notop) -->
 
 * [Arity](#arity)
