@@ -6,4 +6,10 @@ améliorations de traduction seront donc acceptées. Les améliorations de conte
 [hemanth/functional-programming-jargon](https://github.com/hemanth/functional-programming-jargon/blob/master/contributing.md)
 avant d'être reprises sur ce dépôt.
 
-Le contenu de ce dépôt se base sur le commit hemanth/functional-programming-jargon@69d1b25.
+Le contenu de ce dépôt se base sur le commit
+[hemanth/functional-programming-jargon@69d1b25](https://github.com/hemanth/functional-programming-jargon/commit/69d1b25308f0ff0c5e98234d5d6ccea26aa13388).
+
+# Conventions
+
+- Les acronymes doivent être francisés.
+- Les liens doivent être, dans la mesure du possible, remplacés par des liens en français.
