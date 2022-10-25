@@ -1,0 +1,10 @@
+---
+extends:
+  - "standard"
+  - "plugin:markdown/recommended"
+plugins: [markdown]
+rules:
+  no-unused-vars: 0
+  eqeqeq: 0
+  no-undef: 0
+  no-extend-native: 0
