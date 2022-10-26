@@ -27,7 +27,7 @@ __Table des matières__
 
 * [Arité](#arité)
 * [Fonction d'ordre supérieur](#fonction-dordre-supérieur)
-* [Closure](#closure)
+* [Fermeture](#fermeture)
 * [Partial Application](#partial-application)
 * [Currying](#currying)
 * [Auto Currying](#auto-currying)
@@ -101,7 +101,7 @@ const zero = () => 0
 
 __Pour aller plus loin__
 
-* [Arité](https://fr.wikipedia.org/wiki/Arit%C3%A9) sur Wikipédia.
+* [Arité](https://fr.wikipedia.org/wiki/Arit%C3%A9) sur Wikipédia
 
 ## Fonction d'ordre supérieur
 
@@ -119,24 +119,24 @@ const est = (type) => (x) => Object(x) instanceof type
 filtre(est(Number), [0, '1', 2, null]) // [0, 2]
 ```
 
-## Closure
+## Fermeture
 
-A closure is a scope which captures local variables of a function for access even after the execution has moved out of the block in which it is defined.
-This allows the values in the closure to be accessed by returned functions.
-
+Une fermeture (closure en anglais) est une fonction accompagnée de l'ensemble des variables locales qu'elle a capturées au moment où elle a été définie.
+Ces variables restent alors accessibles même après que le programme soit sorti du bloc où elles ont été définies.
 
 ```js
-const addTo = x => y => x + y
-const addToFive = addTo(5)
-addToFive(3) // => 8
+const ajouterA = x => y => x + y
+const ajouterACinq = ajouterA(5)
+ajouterACinq(3) // => 8
 ```
 
-In this case the `x` is retained in `addToFive`'s closure with the value `5`. `addToFive` can then be called with the `y`
-to get back the sum.
+Dans ce cas, `x` a été capturée par la fermeture `ajouterACinq` avec la valeur `5`. `ajouterACinq` peut alors être
+appelée avec `y` pour retourner la somme.
 
-__Further reading/Sources__
-* [Lambda Vs Closure](http://stackoverflow.com/questions/220658/what-is-the-difference-between-a-closure-and-a-lambda)
-* [JavaScript Closures highly voted discussion](http://stackoverflow.com/questions/111102/how-do-javascript-closures-work)
+__Pour aller plus loin / Sources__
+* [Closures (Fermetures)](https://developer.mozilla.org/fr/docs/Web/JavaScript/Closures)
+* [Lambda Vs Closure (en)](http://stackoverflow.com/questions/220658/what-is-the-difference-between-a-closure-and-a-lambda)
+* [JavaScript Closures highly voted discussion (en)](http://stackoverflow.com/questions/111102/how-do-javascript-closures-work)
 
 ## Partial Application
 

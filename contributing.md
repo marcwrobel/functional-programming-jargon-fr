@@ -13,4 +13,5 @@ Le contenu de ce dépôt se base sur le commit
 
 - Les acronymes doivent être francisés ou supprimés.
 - Les blocs de code doivent être francisés.
-- Les liens doivent être, dans la mesure du possible, remplacés par des liens en français.
+- Les liens doivent être remplacés par des liens en français quand c'est possible. Sinon ils doivent être suffixés avec
+  `(en)`. On pourra aussi éventuellement compléter les liens avec des liens en français.
