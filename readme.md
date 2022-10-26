@@ -307,7 +307,7 @@ sort(sort(sort([2, 1])))
 
 ## Point-Free Style
 
-Writing functions where the definition does not explicitly identify the arguments used. This style usually requires [currying](#currying) or other [Higher-Order functions](#higher-order-functions-hof). A.K.A Tacit programming.
+Writing functions where the definition does not explicitly identify the arguments used. This style usually requires [currying](#currying) or other [Higher-Order functions](#fonction-dordre-supérieur). A.K.A Tacit programming.
 
 ```js
 // Given
