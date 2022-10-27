@@ -33,7 +33,7 @@ __Table des matières__
 * [Auto-curryfication](#auto-curryfication)
 * [Composition de fonctions](#composition-de-fonctions)
 * [Continuation](#continuation)
-* [Pure Function](#pure-function)
+* [Fonction pure](#fonction-pure)
 * [Side effects](#side-effects)
 * [Idempotent](#idempotent)
 * [Point-Free Style](#point-free-style)
@@ -247,40 +247,40 @@ lireFichierAsync('chemin/vers/fichier', (err, reponse) => {
 })
 ```
 
-## Pure Function
+## Fonction pure
 
-A function is pure if the return value is only determined by its input values, and does not produce side effects. The function must always return the same result when given the same input.
+Une fonction est pure si sa valeur de retour n'est déterminée que par ses valeurs d'entrée, et qu'elle ne produit pas d'effets secondaires. La fonction doit toujours renvoyer le même résultat lorsqu'elle reçoit les mêmes entrées.
 
 ```js
-const greet = (name) => `Hi, ${name}`
+const saluer = (nom) => `Salut, ${nom}`
 
-greet('Brianne') // 'Hi, Brianne'
+saluer('Brianne') // 'Salut, Brianne'
 ```
 
-As opposed to each of the following:
+Contrairement à chacun des exemples suivants :
 
 ```js
 window.name = 'Brianne'
 
-const greet = () => `Hi, ${window.name}`
+const saluer = () => `Salut, ${window.name}`
 
-greet() // "Hi, Brianne"
+saluer() // "Salut, Brianne"
 ```
 
-The above example's output is based on data stored outside the function...
+La sortie de l'exemple ci-dessus dépend de données stockées en dehors de la fonction...
 
 ```js
-let greeting
+let salutation
 
-const greet = (name) => {
-  greeting = `Hi, ${name}`
+const saluer = (nom) => {
+  salutation = `Salut, ${nom}`
 }
 
-greet('Brianne')
-greeting // "Hi, Brianne"
+saluer('Brianne')
+salutation // "Salut, Brianne"
 ```
 
-... and this one modifies state outside the function.
+... et celui-ci modifie l'état en dehors de la fonction.
 
 ## Side effects
 
@@ -552,7 +552,7 @@ const greet = () => 'Hello World!'
 
 Any invocation of `greet()` can be replaced with `Hello World!` hence greet is
 referentially transparent. This would be broken if greet depended on external
-state like configuration or a database call. See also [Pure Function](#pure-function) and
+state like configuration or a database call. See also [Pure Function](#fonction-pure) and
 [Equational Reasoning](#equational-reasoning).
 
 ##  Equational Reasoning
@@ -1133,7 +1133,7 @@ getNestedPrice({ item: { price: 9.99 } }) // Some(9.99)
 `Option` is also known as `Maybe`. `Some` is sometimes called `Just`. `None` is sometimes called `Nothing`.
 
 ## Function
-A **function** `f :: A => B` is an expression - often called arrow or lambda expression - with **exactly one (immutable)** parameter of type `A` and **exactly one** return value of type `B`. That value depends entirely on the argument, making functions context-independent, or [referentially transparent](#referential-transparency). What is implied here is that a function must not produce any hidden [side effects](#side-effects) - a function is always [pure](#pure-function), by definition. These properties make functions pleasant to work with: they are entirely deterministic and therefore predictable. Functions enable working with code as data, abstracting over behaviour:
+A **function** `f :: A => B` is an expression - often called arrow or lambda expression - with **exactly one (immutable)** parameter of type `A` and **exactly one** return value of type `B`. That value depends entirely on the argument, making functions context-independent, or [referentially transparent](#referential-transparency). What is implied here is that a function must not produce any hidden [side effects](#side-effects) - a function is always [pure](#fonction-pure), by definition. These properties make functions pleasant to work with: they are entirely deterministic and therefore predictable. Functions enable working with code as data, abstracting over behaviour:
 
 ```js
 // times2 :: Number -> Number
