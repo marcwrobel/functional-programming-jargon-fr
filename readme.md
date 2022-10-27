@@ -35,7 +35,7 @@ __Table des matières__
 * [Continuation](#continuation)
 * [Fonction pure](#fonction-pure)
 * [Effets de bord](#effets-de-bord)
-* [Idempotent](#idempotent)
+* [Idempotence](#idempotence)
 * [Point-Free Style](#point-free-style)
 * [Predicate](#predicate)
 * [Contracts](#contracts)
@@ -294,9 +294,9 @@ const differentAChaqueFois = new Date()
 console.log('Les entrées-sorties sont un effet de bord !')
 ```
 
-## Idempotent
+## Idempotence
 
-A function is idempotent if reapplying it to its result does not produce a different result.
+Une fonction est idempotente si, quand on l'applique à nouveau à son résultat, elle ne produit pas un résultat différent.
 
 ```js
 Math.abs(Math.abs(10))
