@@ -267,7 +267,7 @@ const greet = () => `Hi, ${window.name}`
 greet() // "Hi, Brianne"
 ```
 
-The above example's output is based on data stored outside of the function...
+The above example's output is based on data stored outside the function...
 
 ```js
 let greeting
@@ -280,7 +280,7 @@ greet('Brianne')
 greeting // "Hi, Brianne"
 ```
 
-... and this one modifies state outside of the function.
+... and this one modifies state outside the function.
 
 ## Side effects
 
@@ -567,7 +567,7 @@ const grainToCats = compose(dogsIntoCats, grainToDogs)
 ```
 In the example above, if you know that `chickenIntoDogs` and `grainIntoChicken`
 are pure then you know that the composition is pure. This can be taken further
-when more is known about the functions (associative, communtative, idempotent, etc...)
+when more is known about the functions (associative, commutative, idempotent, etc...)
 
 ## Lambda
 
@@ -846,7 +846,7 @@ coordsToPair(pairToCoords([1, 2])) // [1, 2]
 pairToCoords(coordsToPair({ x: 1, y: 2 })) // {x: 1, y: 2}
 ```
 
-Isomorphisms are an interesting example of [morphism](#morphism) because more than single function is necessary for it to be satisfied. Isomorphisms are also [homomorphisms](#homomorphism) since both input and output types share the property of being reversable.
+Isomorphisms are an interesting example of [morphism](#morphism) because more than single function is necessary for it to be satisfied. Isomorphisms are also [homomorphisms](#homomorphism) since both input and output types share the property of being reversible.
 
 ### Catamorphism
 
@@ -861,7 +861,7 @@ sum([1, 2, 3, 4, 5]) // 15
 
 ### Anamorphism
 
-A function that builds up a structure by repeatedly applying a function to its argument. `unfold` is an example which generates an array by from a function and a seed value. This is the opposite of a [catamorphism](#catamorphism). You can think of this as a anamorphism builds up a structure and catamorphism breaks it down.
+A function that builds up a structure by repeatedly applying a function to its argument. `unfold` is an example which generates an array by from a function and a seed value. This is the opposite of a [catamorphism](#catamorphism). You can think of this as an anamorphism builds up a structure and catamorphism breaks it down.
 
 ```js
 const unfold = (f, seed) => {
@@ -883,7 +883,7 @@ countDown(5) // [5, 4, 3, 2, 1]
 
 ### Hylomorphism
 
-The function which composes a [anamorphism](#anamorphism) followed by a [catamorphism](#catamorphism).
+The function which composes an [anamorphism](#anamorphism) followed by a [catamorphism](#catamorphism).
 
 ```js
 const sumUpToX = (x) => sum(countDown(x))
@@ -1018,7 +1018,7 @@ Other implementations:
 
 Often functions in JavaScript will include comments that indicate the types of their arguments and return values.
 
-There's quite a bit of variance across the community but they often follow the following patterns:
+There's quite a bit of variance across the community, but they often follow the following patterns:
 
 ```js
 // functionName :: firstArgType -> secondArgType -> returnType
@@ -1133,7 +1133,7 @@ getNestedPrice({ item: { price: 9.99 } }) // Some(9.99)
 `Option` is also known as `Maybe`. `Some` is sometimes called `Just`. `None` is sometimes called `Nothing`.
 
 ## Function
-A **function** `f :: A => B` is an expression - often called arrow or lambda expression - with **exactly one (immutable)** parameter of type `A` and **exactly one** return value of type `B`. That value depends entirely on the argument, making functions context-independant, or [referentially transparent](#referential-transparency). What is implied here is that a function must not produce any hidden [side effects](#side-effects) - a function is always [pure](#pure-function), by definition. These properties make functions pleasant to work with: they are entirely deterministic and therefore predictable. Functions enable working with code as data, abstracting over behaviour:
+A **function** `f :: A => B` is an expression - often called arrow or lambda expression - with **exactly one (immutable)** parameter of type `A` and **exactly one** return value of type `B`. That value depends entirely on the argument, making functions context-independent, or [referentially transparent](#referential-transparency). What is implied here is that a function must not produce any hidden [side effects](#side-effects) - a function is always [pure](#pure-function), by definition. These properties make functions pleasant to work with: they are entirely deterministic and therefore predictable. Functions enable working with code as data, abstracting over behaviour:
 
 ```js
 // times2 :: Number -> Number
@@ -1206,7 +1206,7 @@ times(3)(console.log)
 times(-1)(console.log)
 // won't execute anything
 ```
-Making your partial functions total ones, these kinds of runtime errors can be prevented. Always returning a value will also make for code that is both easier to maintain as well as to reason about.
+Making your partial functions total ones, these kinds of runtime errors can be prevented. Always returning a value will also make for code that is both easier to maintain and to reason about.
 
 ## Total Function
 
