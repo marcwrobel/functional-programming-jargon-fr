@@ -37,7 +37,7 @@ __Table des matières__
 * [Effets de bord](#effets-de-bord)
 * [Idempotence](#idempotence)
 * [Programmation tacite (point-free style)](#programmation-tacite-point-free-style)
-* [Predicate](#predicate)
+* [Prédicat](#prédicat)
 * [Contracts](#contracts)
 * [Category](#category)
 * [Value](#value)
@@ -326,13 +326,14 @@ const incrementerTout2 = map(ajouter(1))
 
 Les définitions de fonctions _point-free_ ressemblent à des affectations normales sans `function` ou `=>`. Il convient de mentionner que les fonctions _point-free_ ne sont pas nécessairement meilleures que leurs homologues non-_point-free_, car elles peuvent être plus difficiles à comprendre lorsqu'elles sont complexes.
 
-## Predicate
-A predicate is a function that returns true or false for a given value. A common use of a predicate is as the callback for array filter.
+## Prédicat
+
+Un prédicat est une fonction qui retourne vrai ou faux pour une valeur donnée. Une utilisation courante d'un prédicat est la fonction utilisée pour filtrer un tableau.
 
 ```js
-const predicate = (a) => a > 2
+const predicat = (a) => a > 2
 
-;[1, 2, 3, 4].filter(predicate) // [3, 4]
+[1, 2, 3, 4].filter(predicat) // [3, 4]
 ```
 
 ## Contracts
