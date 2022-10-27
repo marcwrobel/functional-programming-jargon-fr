@@ -36,7 +36,7 @@ __Table des matières__
 * [Fonction pure](#fonction-pure)
 * [Effets de bord](#effets-de-bord)
 * [Idempotence](#idempotence)
-* [Point-Free Style](#point-free-style)
+* [Programmation tacite (point-free style)](#programmation-tacite-point-free-style)
 * [Predicate](#predicate)
 * [Contracts](#contracts)
 * [Category](#category)
@@ -306,25 +306,25 @@ Math.abs(Math.abs(10))
 sort(sort(sort([2, 1])))
 ```
 
-## Point-Free Style
+## Programmation tacite (point-free style)
 
-Writing functions where the definition does not explicitly identify the arguments used. This style usually requires [currying](#curryfication) or other [Higher-Order functions](#fonction-dordre-supérieur). A.K.A Tacit programming.
+La programmation tacite, aussi connu sous le nom de _point-free style_, est une manière d'écrire une fonction en n'identifiant pas explicitement les arguments utilisés. Ce style de programmation requiert généralement les notions de [curryfication](#curryfication) ou de [fonctions d'ordre supérieur](#fonction-dordre-supérieur).
 
 ```js
-// Given
-const map = (fn) => (list) => list.map(fn)
-const add = (a) => (b) => a + b
+// Étant donné
+const map = (fn) => (liste) => liste.map(fn)
+const ajouter = (a) => (b) => a + b
 
-// Then
+// Alors
 
-// Not point-free - `numbers` is an explicit argument
-const incrementAll = (numbers) => map(add(1))(numbers)
+// Sans la programmation tacite - `nombres` est un argument explicite
+const incrementerTout = (nombres) => map(ajouter(1))(nombres)
 
-// Point-free - The list is an implicit argument
-const incrementAll2 = map(add(1))
+// Avec la programmation tacite - La liste est un argument implicite
+const incrementerTout2 = map(ajouter(1))
 ```
 
-Point-free function definitions look just like normal assignments without `function` or `=>`. It's worth mentioning that point-free functions are not necessarily better than their counterparts, as they can be more difficult to understand when complex.
+Les définitions de fonctions _point-free_ ressemblent à des affectations normales sans `function` ou `=>`. Il convient de mentionner que les fonctions _point-free_ ne sont pas nécessairement meilleures que leurs homologues non-_point-free_, car elles peuvent être plus difficiles à comprendre lorsqu'elles sont complexes.
 
 ## Predicate
 A predicate is a function that returns true or false for a given value. A common use of a predicate is as the callback for array filter.
@@ -596,7 +596,7 @@ const add1 = (a) => a + 1
 A branch of mathematics that uses functions to create a [universal model of computation](https://en.wikipedia.org/wiki/Lambda_calculus).
 
 ## Functional Combinator
-A higher-order function, usually curried, which returns a new function changed in some way. Functional combinators are often used in [Point-Free Style](#point-free-style) to write especially terse programs.
+A higher-order function, usually curried, which returns a new function changed in some way. Functional combinators are often used in [Point-Free Style](#programmation-tacite-point-free-style) to write especially terse programs.
 
 ```js
 // The "C" combinator takes a curried two-argument function and returns one which calls the original function with the arguments reversed.
