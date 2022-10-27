@@ -29,7 +29,7 @@ __Table des matières__
 * [Fonction d'ordre supérieur](#fonction-dordre-supérieur)
 * [Fermeture](#fermeture)
 * [Application partielle](#application-partielle)
-* [Currying](#currying)
+* [Curryfication](#curryfication)
 * [Auto Currying](#auto-currying)
 * [Function Composition](#function-composition)
 * [Continuation](#continuation)
@@ -166,25 +166,25 @@ Vous pouvez aussi utiliser `Function.prototype.bind` pour appliquer partiellemen
 const cinqPlus = ajouter3.bind(null, 2, 3) // (c) => 2 + 3 + c
 ```
 
-L'application partielle permet de créer des fonctions plus simples à partir de fonctions plus complexes en y intégrant les données au fur et à mesure où elles sont disponibles. Les fonctions [curryfiées](#currying) sont automatiquement partiellement appliquées.
+L'application partielle permet de créer des fonctions plus simples à partir de fonctions plus complexes en y intégrant les données au fur et à mesure où elles sont disponibles. Les fonctions [curryfiées](#curryfication) sont automatiquement partiellement appliquées.
 
 
-## Currying
+## Curryfication
 
-The process of converting a function that takes multiple arguments into a function that takes them one at a time.
+Processus de conversion d'une fonction qui prend plusieurs arguments en une fonction qui les prend un à la fois.
 
-Each time the function is called it only accepts one argument and returns a function that takes one argument until all arguments are passed.
+Chaque fois que la fonction est appelée, elle n'accepte qu'un seul argument et retourne une fonction qui prend un argument jusqu'à ce que tous les arguments soient passés.
 
 ```js
-const sum = (a, b) => a + b
+const somme = (a, b) => a + b
 
-const curriedSum = (a) => (b) => a + b
+const sommeCurryfiee = (a) => (b) => a + b
 
-curriedSum(40)(2) // 42.
+sommeCurryfiee(40)(2) // 42.
 
-const add2 = curriedSum(2) // (b) => 2 + b
+const ajouter2 = sommeCurryfiee(2) // (b) => 2 + b
 
-add2(10) // 12
+ajouter2(10) // 12
 ```
 
 ## Auto Currying
@@ -307,7 +307,7 @@ sort(sort(sort([2, 1])))
 
 ## Point-Free Style
 
-Writing functions where the definition does not explicitly identify the arguments used. This style usually requires [currying](#currying) or other [Higher-Order functions](#fonction-dordre-supérieur). A.K.A Tacit programming.
+Writing functions where the definition does not explicitly identify the arguments used. This style usually requires [currying](#curryfication) or other [Higher-Order functions](#fonction-dordre-supérieur). A.K.A Tacit programming.
 
 ```js
 // Given
@@ -429,7 +429,7 @@ john.age + five === ({ name: 'John', age: 30 }).age + 5
 
 ### Constant Function
 
-A [curried](#currying) function that ignores its second argument:
+A [curried](#curryfication) function that ignores its second argument:
 
 ```js
 const constant = a => () => a
