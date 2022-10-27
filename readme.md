@@ -30,7 +30,7 @@ __Table des matières__
 * [Fermeture](#fermeture)
 * [Application partielle](#application-partielle)
 * [Curryfication](#curryfication)
-* [Auto Currying](#auto-currying)
+* [Auto-curryfication](#auto-curryfication)
 * [Function Composition](#function-composition)
 * [Continuation](#continuation)
 * [Pure Function](#pure-function)
@@ -187,23 +187,24 @@ const ajouter2 = sommeCurryfiee(2) // (b) => 2 + b
 ajouter2(10) // 12
 ```
 
-## Auto Currying
-Transforming a function that takes multiple arguments into one that if given less than its correct number of arguments returns a function that takes the rest. When the function gets the correct number of arguments it is then evaluated.
+## Auto-curryfication
 
-lodash & Ramda have a `curry` function that works this way.
+La transformation d'une fonction qui prend plusieurs arguments en une fonction qui, si on lui donne moins que son nombre correct d'arguments, renvoie une fonction qui prend le reste des arguments. Lorsque la fonction est appelée avec le nombre correct d'arguments, elle est ensuite évaluée. 
+
+Lodash et Ramda ont une fonction `curry` qui marche comme suit.
 
 ```js
-const add = (x, y) => x + y
+const somme = (x, y) => x + y
 
-const curriedAdd = _.curry(add)
-curriedAdd(1, 2) // 3
-curriedAdd(1) // (y) => 1 + y
-curriedAdd(1)(2) // 3
+const sommeCurryfiee = _.curry(somme)
+sommeCurryfiee(1, 2) // 3
+sommeCurryfiee(1) // (y) => 1 + y
+sommeCurryfiee(1)(2) // 3
 ```
 
-__Further reading__
-* [Favoring Curry](http://fr.umio.us/favoring-curry/)
-* [Hey Underscore, You're Doing It Wrong!](https://www.youtube.com/watch?v=m3svKOdZijA)
+__Pour aller plus loin__
+* [Favoring Curry (en)](http://fr.umio.us/favoring-curry/)
+* [Hey Underscore, You're Doing It Wrong! (en)](https://www.youtube.com/watch?v=m3svKOdZijA)
 
 ## Function Composition
 
