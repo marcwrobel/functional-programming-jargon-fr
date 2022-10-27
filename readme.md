@@ -31,7 +31,7 @@ __Table des matières__
 * [Application partielle](#application-partielle)
 * [Curryfication](#curryfication)
 * [Auto-curryfication](#auto-curryfication)
-* [Function Composition](#function-composition)
+* [Composition de fonctions](#composition-de-fonctions)
 * [Continuation](#continuation)
 * [Pure Function](#pure-function)
 * [Side effects](#side-effects)
@@ -206,14 +206,14 @@ __Pour aller plus loin__
 * [Favoring Curry (en)](http://fr.umio.us/favoring-curry/)
 * [Hey Underscore, You're Doing It Wrong! (en)](https://www.youtube.com/watch?v=m3svKOdZijA)
 
-## Function Composition
+## Composition de fonctions
 
-The act of putting two functions together to form a third function where the output of one function is the input of the other. This is one of the most important ideas of functional programming.
+L'acte de mettre deux fonctions ensemble pour en former une troisième, où la sortie d'une fonction est l'entrée de l'autre. C'est l'une des idées les plus importantes de la programmation fonctionnelle.
 
 ```js
-const compose = (f, g) => (a) => f(g(a)) // Definition
-const floorAndToString = compose((val) => val.toString(), Math.floor) // Usage
-floorAndToString(121.212121) // '121'
+const composer = (f, g) => (a) => f(g(a)) // Définition
+const floorEtToString = composer((val) => val.toString(), Math.floor) // Utilisation
+floorEtToString(121.212121) // '121'
 ```
 
 ## Continuation
