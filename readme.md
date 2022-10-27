@@ -34,7 +34,7 @@ __Table des matières__
 * [Composition de fonctions](#composition-de-fonctions)
 * [Continuation](#continuation)
 * [Fonction pure](#fonction-pure)
-* [Side effects](#side-effects)
+* [Effets de bord](#effets-de-bord)
 * [Idempotent](#idempotent)
 * [Point-Free Style](#point-free-style)
 * [Predicate](#predicate)
@@ -282,16 +282,16 @@ salutation // "Salut, Brianne"
 
 ... et celui-ci modifie l'état en dehors de la fonction.
 
-## Side effects
+## Effets de bord
 
-A function or expression is said to have a side effect if apart from returning a value, it interacts with (reads from or writes to) external mutable state.
+Une fonction ou une expression est dite à effet de bord si, en plus de renvoyer une valeur, elle interagit (lit ou écrit) avec son environnement externe et que ce dernier est mutable.
 
 ```js
-const differentEveryTime = new Date()
+const differentAChaqueFois = new Date()
 ```
 
 ```js
-console.log('IO is a side effect!')
+console.log('Les entrées-sorties sont un effet de bord !')
 ```
 
 ## Idempotent
@@ -1133,7 +1133,7 @@ getNestedPrice({ item: { price: 9.99 } }) // Some(9.99)
 `Option` is also known as `Maybe`. `Some` is sometimes called `Just`. `None` is sometimes called `Nothing`.
 
 ## Function
-A **function** `f :: A => B` is an expression - often called arrow or lambda expression - with **exactly one (immutable)** parameter of type `A` and **exactly one** return value of type `B`. That value depends entirely on the argument, making functions context-independent, or [referentially transparent](#referential-transparency). What is implied here is that a function must not produce any hidden [side effects](#side-effects) - a function is always [pure](#fonction-pure), by definition. These properties make functions pleasant to work with: they are entirely deterministic and therefore predictable. Functions enable working with code as data, abstracting over behaviour:
+A **function** `f :: A => B` is an expression - often called arrow or lambda expression - with **exactly one (immutable)** parameter of type `A` and **exactly one** return value of type `B`. That value depends entirely on the argument, making functions context-independent, or [referentially transparent](#referential-transparency). What is implied here is that a function must not produce any hidden [side effects](#effets-de-bord) - a function is always [pure](#fonction-pure), by definition. These properties make functions pleasant to work with: they are entirely deterministic and therefore predictable. Functions enable working with code as data, abstracting over behaviour:
 
 ```js
 // times2 :: Number -> Number
