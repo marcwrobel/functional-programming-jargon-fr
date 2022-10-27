@@ -218,32 +218,32 @@ floorEtToString(121.212121) // '121'
 
 ## Continuation
 
-At any given point in a program, the part of the code that's yet to be executed is known as a continuation.
+À tout moment d'un programme, la partie du code qui n'a pas encore été exécutée est appelée _continuation_.
 
 ```js
-const printAsString = (num) => console.log(`Given ${num}`)
+const afficher = (nombre) => console.log(`Nombre ${nombre}`)
 
-const addOneAndContinue = (num, cc) => {
-  const result = num + 1
-  cc(result)
+const ajouterUnEtContinuer = (nombre, cc) => {
+  const resultat = nombre + 1
+  cc(resultat)
 }
 
-addOneAndContinue(2, printAsString) // 'Given 3'
+ajouterUnEtContinuer(2, afficher) // 'Nombre 3'
 ```
 
-Continuations are often seen in asynchronous programming when the program needs to wait to receive data before it can continue. The response is often passed off to the rest of the program, which is the continuation, once it's been received.
+Les continuations sont souvent observées en programmation asynchrone lorsque le programme doit attendre de recevoir des données avant de pouvoir continuer à s'exécuter. La réponse est souvent transmise au reste du programme, qui est la continuation, une fois qu'elle a été reçue.
 
 ```js
-const continueProgramWith = (data) => {
-  // Continues program with data
+const poursuivreLeProgrammeAvec = (donnees) => {
+  // Poursuit le programme avec les données
 }
 
-readFileAsync('path/to/file', (err, response) => {
+lireFichierAsync('chemin/vers/fichier', (err, reponse) => {
   if (err) {
-    // handle error
+    // prend en charge l'erreur
     return
   }
-  continueProgramWith(response)
+  poursuivreLeProgrammeAvec(reponse)
 })
 ```
 
