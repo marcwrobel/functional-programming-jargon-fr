@@ -49,7 +49,7 @@ __Table des matières__
 * [Foncteur pointé](#foncteur-pointé)
 * [Relèvement](#relèvement)
 * [Transparence référentielle](#transparence-référentielle)
-* [Equational Reasoning](#equational-reasoning)
+* [Raisonnement équationnel](#raisonnement-équationnel)
 * [Lambda](#lambda)
 * [Lambda Calculus](#lambda-calculus)
 * [Functional Combinator](#functional-combinator)
@@ -555,21 +555,21 @@ const saluer = () => 'Bonjour le monde !'
 Toute invocation de `saluer()` peut être remplacée par `Bonjour le monde !`, donc `saluer` est
 référentiellement transparente. Cela ne serait pas le cas si `saluer` dépendait d'un état externe
 comme de la configuration ou un appel à une base de données. Voir aussi [Fonction pure](#fonction-pure) et
-[Raisonnement équationnel](#equational-reasoning).
+[Raisonnement équationnel](#raisonnement-équationnel).
 
-##  Equational Reasoning
+## Raisonnement équationnel
 
-When an application is composed of expressions and devoid of side effects,
-truths about the system can be derived from the parts. You can also be confident
-about details of your system without having to go through every function.
+Lorsqu'une application est composée d'expressions et dépourvue d'effets secondaires,
+des affirmations peuvent être déduites de ses parties. Vous pouvez également être sûr
+des détails de votre programme sans avoir à parcourir toutes les fonctions.
 
 ```js
-const grainToDogs = compose(chickenIntoDogs, grainIntoChicken)
-const grainToCats = compose(dogsIntoCats, grainToDogs)
+const grainesDansChiens = compose(pouletsDansChiens, grainesDansPoulets)
+const grainesDansChats = compose(chiensDansChats, grainesDansChiens)
 ```
-In the example above, if you know that `chickenIntoDogs` and `grainIntoChicken`
-are pure then you know that the composition is pure. This can be taken further
-when more is known about the functions (associative, commutative, idempotent, etc...)
+Dans l'exemple ci-dessus, si vous savez que `pouletsDansChiens` et `grainesDansPoulets` sont [pures](#fonction-pure),
+alors vous savez que la composition est également pure. Les choses peuvent être poussées un peu plus loin lorsque l'on
+en sait plus sur les fonctions (associativité, commutativité, idempotence, etc...).
 
 ## Lambda
 
