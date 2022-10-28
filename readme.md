@@ -52,7 +52,7 @@ __Table des matières__
 * [Raisonnement équationnel](#raisonnement-équationnel)
 * [Lambda](#lambda)
 * [Lambda-calcul](#lambda-calcul)
-* [Functional Combinator](#functional-combinator)
+* [Combinateur fonctionnel](#combinateur-fonctionnel)
 * [Lazy evaluation](#lazy-evaluation)
 * [Monoid](#monoid)
 * [Monad](#monad)
@@ -600,23 +600,24 @@ const ajouter1 = (a) => a + 1
 
 Une branche des mathématiques qui utilise les fonctions pour créer un [modèle universel de calcul](https://fr.wikipedia.org/wiki/Lambda-calcul).
 
-## Functional Combinator
-A higher-order function, usually curried, which returns a new function changed in some way. Functional combinators are often used in [Point-Free Style](#programmation-tacite-point-free-style) to write especially terse programs.
+## Combinateur fonctionnel
+
+Une fonction d'ordre supérieur, généralement curryfiée, qui renvoie une nouvelle fonction modifiée d'une manière ou d'une autre. Les combinateurs fonctionnels sont souvent utilisés en [programmation tacite](#programmation-tacite-point-free-style) pour écrire des programmes particulièrement concis.
 
 ```js
-// The "C" combinator takes a curried two-argument function and returns one which calls the original function with the arguments reversed.
+// Le combinateur "C" prend une fonction curryfiée à deux arguments et en renvoie une nouvelle qui appelle la fonction d'origine avec les arguments inversés.
 const C = (f) => (a) => (b) => f(b)(a)
 
-const divide = (a) => (b) => a / b
+const diviser = (a) => (b) => a / b
 
-const divideBy = C(divide)
+const diviserPar = C(diviser)
 
-const divBy10 = divideBy(10)
+const diviserPar10 = diviserPar(10)
 
-divBy10(30) // => 3
+diviserPar10(30) // => 3
 ```
 
-See also [List of Functional Combinators in JavaScript](https://gist.github.com/Avaq/1f0636ec5c8d6aed2e45) which includes links to more references.
+Voir aussi [List of Functional Combinators in JavaScript (en)](https://gist.github.com/Avaq/1f0636ec5c8d6aed2e45) qui donne aussi des liens vers plus de références.
 
 ## Lazy evaluation
 
