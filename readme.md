@@ -567,13 +567,14 @@ des détails de votre programme sans avoir à parcourir toutes les fonctions.
 const grainesDansChiens = compose(pouletsDansChiens, grainesDansPoulets)
 const grainesDansChats = compose(chiensDansChats, grainesDansChiens)
 ```
+
 Dans l'exemple ci-dessus, si vous savez que `pouletsDansChiens` et `grainesDansPoulets` sont [pures](#fonction-pure),
 alors vous savez que la composition est également pure. Les choses peuvent être poussées un peu plus loin lorsque l'on
 en sait plus sur les fonctions (associativité, commutativité, idempotence, etc...).
 
 ## Lambda
 
-An anonymous function that can be treated like a value.
+Une fonction anonyme qui peut être traitée comme une valeur.
 
 ```js
 ;(function (a) {
@@ -582,16 +583,17 @@ An anonymous function that can be treated like a value.
 
 ;(a) => a + 1
 ```
-Lambdas are often passed as arguments to Higher-Order functions.
+
+Les lambdas sont souvent utilisées en tant qu'arguments de fonctions d'ordre supérieur.
 
 ```js
 ;[1, 2].map((a) => a + 1) // [2, 3]
 ```
 
-You can assign a lambda to a variable.
+Une lambda peut être affectée à une variable. .
 
 ```js
-const add1 = (a) => a + 1
+const ajouter1 = (a) => a + 1
 ```
 
 ## Lambda Calculus
