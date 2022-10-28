@@ -45,7 +45,7 @@ __Table des matières__
   * [Fonction constante](#fonction-constante)
   * [Foncteur constant](#foncteur-constant)
   * [Monade constante](#monade-constante)
-* [Functor](#functor)
+* [Foncteur](#foncteur)
 * [Pointed Functor](#pointed-functor)
 * [Lift](#lift)
 * [Referential Transparency](#referential-transparency)
@@ -442,7 +442,7 @@ const constante = a => () => a
 
 ### Foncteur constant
 
-Un object dont la fonction `map` ne transforme pas le contenu. Voir [Foncteur](#functor).
+Un object dont la fonction `map` ne transforme pas le contenu. Voir [Foncteur](#foncteur).
 
 ```js
 Constante(1).map(n => n + 1) // => Constante(1)
@@ -456,34 +456,34 @@ Un object dont la fonction `chain` ne transforme pas le contenu. Voir [Monade](#
 Constante(1).chain(n => Constante(n + 1)) // => Constante(1)
 ```
 
-## Functor
+## Foncteur
 
-An object that implements a `map` function that takes a function which is run on the contents of that object. A functor must adhere to two rules:
+Un objet qui implémente une fonction `map` qui prend en paramètre une fonction qui sera exécutée sur son contenu. Un foncteur doit respecter deux règles :
 
-__Preserves identity__
+__Préserver l'identité__
 
 ```js
-object.map(x => x)
+objet.map(x => x)
 ``` 
 
-is equivalent to just `object`. 
+équivaut à `objet`. 
 
 
-__Composable__
-
-```js
-object.map(x => g(f(x)))
-```
-
-is equivalent to
+__Être composable__
 
 ```js
-object.map(f).map(g)
+objet.map(x => g(f(x)))
 ```
 
-(`f`, `g` are arbitrary composable functions)
+équivaut à
 
-The reference implementation of [Option](#option) is a functor as it satisfies the rules:
+```js
+objet.map(f).map(g)
+```
+
+(où `f`, `g` sont des fonctions composables arbitraires).
+
+L'implémentation de référence de [Option](#option) est un foncteur car il satisfait ces deux règles :
 
 ```js
 some(1).map(x => x) // = some(1)
@@ -678,7 +678,7 @@ As a counterexample, subtraction does not form a monoid because there is no comm
 
 ## Monad
 
-A monad is an object with [`of`](#pointed-functor) and `chain` functions. `chain` is like [`map`](#functor) except it un-nests the resulting nested object.
+A monad is an object with [`of`](#pointed-functor) and `chain` functions. `chain` is like [`map`](#foncteur) except it un-nests the resulting nested object.
 
 ```js
 // Implementation
