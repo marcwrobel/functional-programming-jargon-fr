@@ -54,7 +54,7 @@ __Table des matières__
 * [Lambda-calcul](#lambda-calcul)
 * [Combinateur fonctionnel](#combinateur-fonctionnel)
 * [Évaluation paresseuse](#évaluation-paresseuse)
-* [Monoid](#monoid)
+* [Monoïde](#monoïde)
 * [Monad](#monad)
 * [Comonad](#comonad)
 * [Kleisi Composition](#kleisi-composition)
@@ -636,45 +636,47 @@ const randIter = rand()
 randIter.next() // Chaque exécution donne une valeur aléatoire, l'expression est évaluée au besoin.
 ```
 
-## Monoid
+## Monoïde
 
-An object with a function that "combines" that object with another of the same type (semigroup) which has an "identity" value.
+Un objet avec une fonction qui « combine » cet objet avec un autre du même type ([semi-groupe](#semigroup)) qui a de plus une valeur neutre.
 
-One simple monoid is the addition of numbers:
+Un exemple de monoïde simple est l'addition de nombres :
 
 ```js
 1 + 1 // 2
 ```
-In this case number is the object and `+` is the function.
 
-When any value is combined with the "identity" value the result must be the original value. The identity must also be commutative.
+Dans ce cas, le nombre est l'objet et `+` est la fonction.
 
-The identity value for addition is `0`.
+Lorsqu'une valeur est combinée avec la valeur neutre, le résultat doit être la valeur d'origine. La fonction doit également être commutative dans ce cas.
+
+La valeur neutre pour l'addition est `0` :
+
 ```js
 1 + 0 // 1
 0 + 1 // 1
 1 + 0 === 0 + 1
 ```
 
-It's also required that the grouping of operations will not affect the result (associativity):
+Il est également nécessaire que le regroupement des opérations n'influe pas sur le résultat (associativité) :
 
 ```js
 1 + (2 + 3) === (1 + 2) + 3 // true
 ```
 
-Array concatenation also forms a monoid:
+La concaténation de tableaux forme également un monoïde :
 
 ```js
 ;[1, 2].concat([3, 4]) // [1, 2, 3, 4]
 ```
 
-The identity value is empty array `[]`
+La valeur neutre est alors un tableau vide `[]` :
 
 ```js
 ;[1, 2].concat([]) // [1, 2]
 ```
 
-As a counterexample, subtraction does not form a monoid because there is no commutative identity value:
+A titre de contre-exemple, la soustraction ne forme pas de monoïde car il n'y a pas de valeur neutre commutative :
 
 ```js
 0 - 4 === 4 - 0 // false
@@ -803,7 +805,7 @@ A relationship between objects within a [category](#catégorie). In the context 
 
 A function where there is a structural property that is the same in the input as well as the output.
 
-For example, in a [Monoid](#monoid) homomorphism both the input and the output are monoids even if their types are different. 
+For example, in a [Monoid](#monoïde) homomorphism both the input and the output are monoids even if their types are different. 
 
 ```js
 // toList :: [number] -> string
