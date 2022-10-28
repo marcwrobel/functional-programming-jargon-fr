@@ -51,7 +51,7 @@ __Table des matières__
 * [Transparence référentielle](#transparence-référentielle)
 * [Raisonnement équationnel](#raisonnement-équationnel)
 * [Lambda](#lambda)
-* [Lambda Calculus](#lambda-calculus)
+* [Lambda-calcul](#lambda-calcul)
 * [Functional Combinator](#functional-combinator)
 * [Lazy evaluation](#lazy-evaluation)
 * [Monoid](#monoid)
@@ -596,8 +596,9 @@ Une lambda peut être affectée à une variable. .
 const ajouter1 = (a) => a + 1
 ```
 
-## Lambda Calculus
-A branch of mathematics that uses functions to create a [universal model of computation](https://en.wikipedia.org/wiki/Lambda_calculus).
+## Lambda-calcul
+
+Une branche des mathématiques qui utilise les fonctions pour créer un [modèle universel de calcul](https://fr.wikipedia.org/wiki/Lambda-calcul).
 
 ## Functional Combinator
 A higher-order function, usually curried, which returns a new function changed in some way. Functional combinators are often used in [Point-Free Style](#programmation-tacite-point-free-style) to write especially terse programs.
