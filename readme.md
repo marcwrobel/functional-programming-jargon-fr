@@ -53,7 +53,7 @@ __Table des matières__
 * [Lambda](#lambda)
 * [Lambda-calcul](#lambda-calcul)
 * [Combinateur fonctionnel](#combinateur-fonctionnel)
-* [Lazy evaluation](#lazy-evaluation)
+* [Évaluation paresseuse](#évaluation-paresseuse)
 * [Monoid](#monoid)
 * [Monad](#monad)
 * [Comonad](#comonad)
@@ -619,9 +619,9 @@ diviserPar10(30) // => 3
 
 Voir aussi [List of Functional Combinators in JavaScript (en)](https://gist.github.com/Avaq/1f0636ec5c8d6aed2e45) qui donne aussi des liens vers plus de références.
 
-## Lazy evaluation
+## Évaluation paresseuse
 
-Lazy evaluation is a call-by-need evaluation mechanism that delays the evaluation of an expression until its value is needed. In functional languages, this allows for structures like infinite lists, which would not normally be available in an imperative language where the sequencing of commands is significant.
+L'évaluation paresseuse est un mécanisme qui retarde l'évaluation d'une expression jusqu'à ce que sa valeur soit nécessaire. Dans les langages fonctionnels, cela permet des structures telles que les listes infinies, qui ne seraient normalement pas disponibles dans un langage impératif où l'enchaînement des commandes est important.
 
 ```js
 const rand = function * () {
@@ -633,7 +633,7 @@ const rand = function * () {
 
 ```js
 const randIter = rand()
-randIter.next() // Each execution gives a random value, expression is evaluated on need.
+randIter.next() // Chaque exécution donne une valeur aléatoire, l'expression est évaluée au besoin.
 ```
 
 ## Monoid
