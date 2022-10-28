@@ -483,7 +483,7 @@ objet.map(f).map(g)
 
 (où `f`, `g` sont des fonctions composables arbitraires).
 
-L'implémentation de référence de [Option](#option) est un foncteur car il satisfait ces deux règles :
+L'implémentation de référence d'[Option](#option) est un foncteur car il satisfait ces deux règles :
 
 ```js
 some(1).map(x => x) // = some(1)
