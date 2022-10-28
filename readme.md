@@ -47,7 +47,7 @@ __Table des matières__
   * [Monade constante](#monade-constante)
 * [Foncteur](#foncteur)
 * [Foncteur pointé](#foncteur-pointé)
-* [Lift](#lift)
+* [Relèvement](#relèvement)
 * [Referential Transparency](#referential-transparency)
 * [Equational Reasoning](#equational-reasoning)
 * [Lambda](#lambda)
@@ -509,38 +509,37 @@ ES2015 a ajouté `Array.of`, transformant ainsi les tableaux en foncteur pointé
 Array.of(1) // [1]
 ```
 
-## Lift
+## Relèvement
 
-Lifting is when you take a value and put it into an object like a [functor](#foncteur-pointé). If you lift a function into an [Applicative Functor](#applicative-functor) then you can make it work on values that are also in that functor.
+Le relèvement est l'action de prendre une valeur et de la mettre dans un objet tel qu'un [foncteur](#foncteur-pointé). Si vous relevez une fonction dans un [foncteur applicatif](#applicative-functor), vous pouvez l'appliquer à valeurs qui se trouvent également dans ce foncteur.
 
-Some implementations have a function called `lift`, or `liftA2` to make it easier to run functions on functors.
+Certaines implémentations ont une fonction appelée `lift` ou `liftA2` pour faciliter l'exécution de fonctions sur des foncteurs.
 
 ```js
-const liftA2 = (f) => (a, b) => a.map(f).ap(b) // note it's `ap` and not `map`.
+const liftA2 = (f) => (a, b) => a.map(f).ap(b) // note: c'est bien `ap` et non `map`.
 
 const mult = a => b => a * b
 
-const liftedMult = liftA2(mult) // this function now works on functors like array
+const multRelevé = liftA2(mult) // cette nouvelle fonction s'appliquer à des foncteurs comme array
 
-liftedMult([1, 2], [3]) // [3, 6]
+multRelevé([1, 2], [3]) // [3, 6]
 liftA2(a => b => a + b)([1, 2], [3, 4]) // [4, 5, 5, 6]
 ```
 
-Lifting a one-argument function and applying it does the same thing as `map`.
+Relever une fonction à un argument et l'appliquer fait la même chose que `map`.
 
 ```js
-const increment = (x) => x + 1
+const incrementer = (x) => x + 1
 
-lift(increment)([2]) // [3]
-;[2].map(increment) // [3]
+lift(incrementer)([2]) // [3]
+;[2].map(incrementer) // [3]
 ```
 
-Lifting simple values can be simply creating the object.
+Relever de simples valeurs peut consister à créer uniquement l'objet.
 
 ```js
 Array.of(1) // => [1]
 ```
-
 
 ## Referential Transparency
 
