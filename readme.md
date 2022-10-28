@@ -40,7 +40,7 @@ __Table des matières__
 * [Prédicat](#prédicat)
 * [Contrats](#contrats)
 * [Catégorie](#catégorie)
-* [Value](#value)
+* [Valeur](#valeur)
 * [Constant](#constant)
   * [Constant Function](#constant-function)
   * [Constant Functor](#constant-functor)
@@ -401,13 +401,13 @@ __Pour aller plus loin__
 * [Théorie des catégories](https://fr.wikipedia.org/wiki/Th%C3%A9orie_des_cat%C3%A9gories) sur Wikipédia
 * [Category Theory for Programmers (en)](https://bartoszmilewski.com/2014/10/28/category-theory-for-programmers-the-preface/)
 
-## Value
+## Valeur
 
-Anything that can be assigned to a variable.
+Tout ce qui peut être assigné à une variable.
 
 ```js
 5
-Object.freeze({ name: 'John', age: 30 }) // The `freeze` function enforces immutability.
+Object.freeze({ nom: 'John', age: 30 }) // La fonction `freeze` renforce l'immutabilité.
 ;(a) => a
 ;[1]
 undefined
