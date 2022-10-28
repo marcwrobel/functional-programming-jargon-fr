@@ -41,10 +41,10 @@ __Table des matières__
 * [Contrats](#contrats)
 * [Catégorie](#catégorie)
 * [Valeur](#valeur)
-* [Constant](#constant)
-  * [Constant Function](#constant-function)
-  * [Constant Functor](#constant-functor)
-  * [Constant Monad](#constant-monad)
+* [Constante](#constante)
+  * [Fonction constante](#fonction-constante)
+  * [Foncteur constant](#foncteur-constant)
+  * [Monade constante](#monade-constante)
 * [Functor](#functor)
 * [Pointed Functor](#pointed-functor)
 * [Lift](#lift)
@@ -413,47 +413,47 @@ Object.freeze({ nom: 'John', age: 30 }) // La fonction `freeze` renforce l'immut
 undefined
 ```
 
-## Constant
+## Constante
 
-A variable that cannot be reassigned once defined.
+Une variable qui ne peut pas être réaffectée une fois définie.
 
 ```js
 const five = 5
 const john = Object.freeze({ name: 'John', age: 30 })
 ```
 
-Constants are [referentially transparent](#referential-transparency). That is, they can be replaced with the values that they represent without affecting the result.
+Les constantes sont [référentiellement transparentes](#referential-transparency). Cela veut dire qu'une constante peut être remplacée par la valeur qu'elle représente sans que le résultat soit modifié.
 
-With the above two constants the following expression will always return `true`.
+Avec les deux constantes ci-dessus, l'expression suivante renverra toujours `true`.
 
 ```js
 john.age + five === ({ name: 'John', age: 30 }).age + 5
 ```
 
-### Constant Function
+### Fonction constante
 
-A [curried](#curryfication) function that ignores its second argument:
+Une fonction [curryfiée](#curryfication) qui ignore son deuxième argument :
 
 ```js
-const constant = a => () => a
+const constante = a => () => a
 
-;[1, 2].map(constant(0)) // => [0, 0]
+;[1, 2].map(constante(0)) // => [0, 0]
 ```
 
-### Constant Functor
+### Foncteur constant
 
-Object whose `map` doesn't transform the contents. See [Functor](#functor)
+Un object dont la fonction `map` ne transforme pas le contenu. Voir [Foncteur](#functor).
 
 ```js
-Constant(1).map(n => n + 1) // => Constant(1)
+Constante(1).map(n => n + 1) // => Constante(1)
 ```
 
-### Constant Monad
+### Monade constante
 
-Object whose `chain` doesn't transform the contents. See [Monad](#monad)
+Un object dont la fonction `chain` ne transforme pas le contenu. Voir [Monade](#monad).
 
 ```js
-Constant(1).chain(n => Constant(n + 1)) // => Constant(1)
+Constante(1).chain(n => Constante(n + 1)) // => Constante(1)
 ```
 
 ## Functor
