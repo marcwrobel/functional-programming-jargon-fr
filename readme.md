@@ -48,7 +48,7 @@ __Table des matières__
 * [Foncteur](#foncteur)
 * [Foncteur pointé](#foncteur-pointé)
 * [Relèvement](#relèvement)
-* [Referential Transparency](#referential-transparency)
+* [Transparence référentielle](#transparence-référentielle)
 * [Equational Reasoning](#equational-reasoning)
 * [Lambda](#lambda)
 * [Lambda Calculus](#lambda-calculus)
@@ -422,7 +422,7 @@ const five = 5
 const john = Object.freeze({ name: 'John', age: 30 })
 ```
 
-Les constantes sont [référentiellement transparentes](#referential-transparency). Cela veut dire qu'une constante peut être remplacée par la valeur qu'elle représente sans que le résultat soit modifié.
+Les constantes sont [référentiellement transparentes](#transparence-référentielle). Cela veut dire qu'une constante peut être remplacée par la valeur qu'elle représente sans que le résultat soit modifié.
 
 Avec les deux constantes ci-dessus, l'expression suivante renverra toujours `true`.
 
@@ -541,21 +541,21 @@ Relever de simples valeurs peut consister à créer uniquement l'objet.
 Array.of(1) // => [1]
 ```
 
-## Referential Transparency
+## Transparence référentielle
 
-An expression that can be replaced with its value without changing the
-behavior of the program is said to be referentially transparent.
+Une expression qui peut être remplacée par sa valeur sans changer le
+comportement du programme est dite référentiellement transparente.
 
-Given the function greet:
+Étant donné la fonction `saluer`:
 
 ```js
-const greet = () => 'Hello World!'
+const saluer = () => 'Bonjour le monde !'
 ```
 
-Any invocation of `greet()` can be replaced with `Hello World!` hence greet is
-referentially transparent. This would be broken if greet depended on external
-state like configuration or a database call. See also [Pure Function](#fonction-pure) and
-[Equational Reasoning](#equational-reasoning).
+Toute invocation de `saluer()` peut être remplacée par `Bonjour le monde !`, donc `saluer` est
+référentiellement transparente. Cela ne serait pas le cas si `saluer` dépendait d'un état externe
+comme de la configuration ou un appel à une base de données. Voir aussi [Fonction pure](#fonction-pure) et
+[Raisonnement équationnel](#equational-reasoning).
 
 ##  Equational Reasoning
 
@@ -1135,7 +1135,7 @@ getNestedPrice({ item: { price: 9.99 } }) // Some(9.99)
 `Option` is also known as `Maybe`. `Some` is sometimes called `Just`. `None` is sometimes called `Nothing`.
 
 ## Function
-A **function** `f :: A => B` is an expression - often called arrow or lambda expression - with **exactly one (immutable)** parameter of type `A` and **exactly one** return value of type `B`. That value depends entirely on the argument, making functions context-independent, or [referentially transparent](#referential-transparency). What is implied here is that a function must not produce any hidden [side effects](#effets-de-bord) - a function is always [pure](#fonction-pure), by definition. These properties make functions pleasant to work with: they are entirely deterministic and therefore predictable. Functions enable working with code as data, abstracting over behaviour:
+A **function** `f :: A => B` is an expression - often called arrow or lambda expression - with **exactly one (immutable)** parameter of type `A` and **exactly one** return value of type `B`. That value depends entirely on the argument, making functions context-independent, or [referentially transparent](#transparence-référentielle). What is implied here is that a function must not produce any hidden [side effects](#effets-de-bord) - a function is always [pure](#fonction-pure), by definition. These properties make functions pleasant to work with: they are entirely deterministic and therefore predictable. Functions enable working with code as data, abstracting over behaviour:
 
 ```js
 // times2 :: Number -> Number
