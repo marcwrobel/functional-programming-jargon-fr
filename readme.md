@@ -730,11 +730,11 @@ CoIdentité(1).extract() // 1
 CoIdentité(1).extend((co) => co.extract() + 1) // CoIdentité(2)
 ```
 
-## Kleisi Composition
+## Composition de Kleisi
 
-An operation for composing two [monad](#monade)-returning functions (Kleisli Arrows) where they have compatible types. In Haskell this is the `>=>` operator.
+Une opération pour composer deux fonctions qui retournent des [monades](#monade) (flèches de Kleisli) quand elles ont des types compatibles. En Haskell, il s'agit de l'opérateur `>=>`.
 
-Using [Option](#option):
+En utilisant [Option](#option) :
 
 ```js
 // safeParseNum :: String -> Option Number
@@ -757,12 +757,11 @@ parseAndValidate('asdf') // => None
 parseAndValidate('999') // => None
 ```
 
-This works because:
+Ceci fonctionne car:
 
- * [Option](#option) is a [monad](#monade)
- * Both `validatePositive` and `safeParseNum` return the same kind of monad (Option).
- * The type of `validatePositive`'s argument matches `safeParseNum`'s unwrapped return.
- 
+ * [Option](#option) est une [monade](#monade)
+ * `validatePositive` et `safeParseNum` renvoient le même type de monade (Option).
+ * Le type d'argument de `validatePositive` correspond au retour non encapsulé de `safeParseNum`.
 
 ## Applicative Functor
 
