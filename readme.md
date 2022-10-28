@@ -46,7 +46,7 @@ __Table des matières__
   * [Foncteur constant](#foncteur-constant)
   * [Monade constante](#monade-constante)
 * [Foncteur](#foncteur)
-* [Pointed Functor](#pointed-functor)
+* [Foncteur pointé](#foncteur-pointé)
 * [Lift](#lift)
 * [Referential Transparency](#referential-transparency)
 * [Equational Reasoning](#equational-reasoning)
@@ -499,10 +499,11 @@ some(1).map(x => g(f(x))) // = some(3)
 some(1).map(f).map(g) // = some(3)
 ```
 
-## Pointed Functor
-An object with an `of` function that puts _any_ single value into it.
+## Foncteur pointé
 
-ES2015 adds `Array.of` making arrays a pointed functor.
+Un objet avec une fonction `of` qui stocke _n'importe_ quelle valeur.
+
+ES2015 a ajouté `Array.of`, transformant ainsi les tableaux en foncteur pointé.
 
 ```js
 Array.of(1) // [1]
@@ -510,7 +511,7 @@ Array.of(1) // [1]
 
 ## Lift
 
-Lifting is when you take a value and put it into an object like a [functor](#pointed-functor). If you lift a function into an [Applicative Functor](#applicative-functor) then you can make it work on values that are also in that functor.
+Lifting is when you take a value and put it into an object like a [functor](#foncteur-pointé). If you lift a function into an [Applicative Functor](#applicative-functor) then you can make it work on values that are also in that functor.
 
 Some implementations have a function called `lift`, or `liftA2` to make it easier to run functions on functors.
 
@@ -678,7 +679,7 @@ As a counterexample, subtraction does not form a monoid because there is no comm
 
 ## Monad
 
-A monad is an object with [`of`](#pointed-functor) and `chain` functions. `chain` is like [`map`](#foncteur) except it un-nests the resulting nested object.
+A monad is an object with [`of`](#foncteur-pointé) and `chain` functions. `chain` is like [`map`](#foncteur) except it un-nests the resulting nested object.
 
 ```js
 // Implementation
