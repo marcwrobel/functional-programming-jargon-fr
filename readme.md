@@ -55,7 +55,7 @@ __Table des matières__
 * [Combinateur fonctionnel](#combinateur-fonctionnel)
 * [Évaluation paresseuse](#évaluation-paresseuse)
 * [Monoïde](#monoïde)
-* [Monad](#monad)
+* [Monade](#monade)
 * [Comonad](#comonad)
 * [Kleisi Composition](#kleisi-composition)
 * [Applicative Functor](#applicative-functor)
@@ -450,7 +450,7 @@ Constante(1).map(n => n + 1) // => Constante(1)
 
 ### Monade constante
 
-Un object dont la fonction `chain` ne transforme pas le contenu. Voir [Monade](#monad).
+Un object dont la fonction `chain` ne transforme pas le contenu. Voir [Monade](#monade).
 
 ```js
 Constante(1).chain(n => Constante(n + 1)) // => Constante(1)
@@ -590,7 +590,7 @@ Les lambdas sont souvent utilisées en tant qu'arguments de fonctions d'ordre su
 ;[1, 2].map((a) => a + 1) // [2, 3]
 ```
 
-Une lambda peut être affectée à une variable. .
+Une lambda peut être affectée à une variable:
 
 ```js
 const ajouter1 = (a) => a + 1
@@ -682,25 +682,25 @@ A titre de contre-exemple, la soustraction ne forme pas de monoïde car il n'y a
 0 - 4 === 4 - 0 // false
 ```
 
-## Monad
+## Monade
 
-A monad is an object with [`of`](#foncteur-pointé) and `chain` functions. `chain` is like [`map`](#foncteur) except it un-nests the resulting nested object.
+Une monade est un objet avec les fonctions [`of`](#foncteur-pointé) et `chain`. `chain` est comme [`map`](#foncteur) sauf qu'il désimbrique les objets imbriqués résultants.
 
 ```js
-// Implementation
+// Implémentation
 Array.prototype.chain = function (f) {
   return this.reduce((acc, it) => acc.concat(f(it)), [])
 }
 
-// Usage
-Array.of('cat,dog', 'fish,bird').chain((a) => a.split(',')) // ['cat', 'dog', 'fish', 'bird']
+// Utilisation
+Array.of('chat,chien', 'poisson,oiseau').chain((a) => a.split(',')) // ['chat', 'chien', 'poisson', 'oiseau']
 
-// Contrast to map
-Array.of('cat,dog', 'fish,bird').map((a) => a.split(',')) // [['cat', 'dog'], ['fish', 'bird']]
+// Contraste avec map
+Array.of('chat,chien', 'poisson,oiseau').map((a) => a.split(',')) // [['chat', 'chien'], ['poisson', 'oiseau']]
 ```
 
-`of` is also known as `return` in other functional languages.
-`chain` is also known as `flatmap` and `bind` in other languages.
+`of` est également connu sous le nom de `return` dans d'autres langages fonctionnels.
+`chain` est par ailleurs connu sous le nom de `flatmap` ou `bind` dans d'autres langages.
 
 ## Comonad
 
@@ -732,7 +732,7 @@ CoIdentity(1).extend((co) => co.extract() + 1) // CoIdentity(2)
 
 ## Kleisi Composition
 
-An operation for composing two [monad](#monad)-returning functions (Kleisli Arrows) where they have compatible types. In Haskell this is the `>=>` operator.
+An operation for composing two [monad](#monade)-returning functions (Kleisli Arrows) where they have compatible types. In Haskell this is the `>=>` operator.
 
 Using [Option](#option):
 
@@ -759,7 +759,7 @@ parseAndValidate('999') // => None
 
 This works because:
 
- * [Option](#option) is a [monad](#monad)
+ * [Option](#option) is a [monad](#monade)
  * Both `validatePositive` and `safeParseNum` return the same kind of monad (Option).
  * The type of `validatePositive`'s argument matches `safeParseNum`'s unwrapped return.
  
