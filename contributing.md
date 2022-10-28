@@ -11,7 +11,9 @@ Le contenu de ce dépôt se base sur le commit
 
 # Conventions
 
-- Les acronymes doivent être francisés ou supprimés.
-- Les blocs de code doivent être francisés.
-- Les liens doivent être remplacés par des liens en français quand c'est possible. Sinon ils doivent être suffixés avec
-  `(en)`. On pourra aussi éventuellement compléter les liens avec des liens en français.
+- Les blocs de code doivent être également francisés.
+- On conservera au maximum la mise en page initiale. Cela facilitera les futures mise à jour.
+- Les acronymes doivent être francisés ou supprimés. Un acronyme anglais a peu de sens en français.
+- Les liens doivent être remplacés par des liens équivalent en français, ou suffixés avec `(en)`. On pourra
+  éventuellement compléter les liens avec des liens en français.
+- Les termes ou expressions qui n'ont pas d'équivalents en français ne seront pas traduits.
