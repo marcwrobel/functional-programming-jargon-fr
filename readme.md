@@ -38,7 +38,7 @@ __Table des matières__
 * [Idempotence](#idempotence)
 * [Programmation tacite (point-free style)](#programmation-tacite-point-free-style)
 * [Prédicat](#prédicat)
-* [Contracts](#contracts)
+* [Contrats](#contrats)
 * [Category](#category)
 * [Value](#value)
 * [Constant](#constant)
@@ -336,21 +336,21 @@ const predicat = (a) => a > 2
 [1, 2, 3, 4].filter(predicat) // [3, 4]
 ```
 
-## Contracts
+## Contrats
 
-A contract specifies the obligations and guarantees of the behavior from a function or expression at runtime. This acts as a set of rules that are expected from the input and output of a function or expression, and errors are generally reported whenever a contract is violated.
+Un contrat spécifie les obligations et les garanties de comportement qu'une fonction ou une expression doit respecter lors de son exécution. C'est un ensemble de règles qui s'appliquent aux entrées et sorties d'une fonction ou d'une expression. Des erreurs sont levées quand le contrat n'est pas respecté.
 
 ```js
-// Define our contract : int -> boolean
-const contract = (input) => {
-  if (typeof input === 'number') return true
-  throw new Error('Contract violated: expected int -> boolean')
+// Definie le contrat : int -> boolean
+const contrat = (entree) => {
+  if (typeof entree === 'number') return true
+  throw new Error('Contrat non respecté : attendu int -> boolean')
 }
 
-const addOne = (num) => contract(num) && num + 1
+const ajouterUn = (nombre) => contrat(nombre) && nombre + 1
 
-addOne(2) // 3
-addOne('some string') // Contract violated: expected int -> boolean
+ajouterUn(2) // 3
+ajouterUn('une chaine') // Contrat non respecté : attendu int -> boolean
 ```
 
 ## Category
