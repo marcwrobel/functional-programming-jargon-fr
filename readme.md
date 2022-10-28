@@ -56,7 +56,7 @@ __Table des matières__
 * [Évaluation paresseuse](#évaluation-paresseuse)
 * [Monoïde](#monoïde)
 * [Monade](#monade)
-* [Comonad](#comonad)
+* [Comonade](#comonade)
 * [Kleisi Composition](#kleisi-composition)
 * [Applicative Functor](#applicative-functor)
 * [Morphism](#morphism)
@@ -702,32 +702,32 @@ Array.of('chat,chien', 'poisson,oiseau').map((a) => a.split(',')) // [['chat', '
 `of` est également connu sous le nom de `return` dans d'autres langages fonctionnels.
 `chain` est par ailleurs connu sous le nom de `flatmap` ou `bind` dans d'autres langages.
 
-## Comonad
+## Comonade
 
-An object that has `extract` and `extend` functions.
+Un objet qui a les fonctions `extract` et `extend`.
 
 ```js
-const CoIdentity = (v) => ({
+const CoIdentité = (v) => ({
   val: v,
   extract () {
     return this.val
   },
   extend (f) {
-    return CoIdentity(f(this))
+    return CoIdentité(f(this))
   }
 })
 ```
 
-Extract takes a value out of a functor.
+`extract` extrait une valeur d'un foncteur :
 
 ```js
-CoIdentity(1).extract() // 1
+CoIdentité(1).extract() // 1
 ```
 
-Extend runs a function on the comonad. The function should return the same type as the comonad.
+`extend` exécute une fonction sur la comonade. La fonction doit renvoyer le même type que la comonade :
 
 ```js
-CoIdentity(1).extend((co) => co.extract() + 1) // CoIdentity(2)
+CoIdentité(1).extend((co) => co.extract() + 1) // CoIdentité(2)
 ```
 
 ## Kleisi Composition
