@@ -39,7 +39,7 @@ __Table des matières__
 * [Programmation tacite (point-free style)](#programmation-tacite-point-free-style)
 * [Prédicat](#prédicat)
 * [Contrats](#contrats)
-* [Category](#category)
+* [Catégorie](#catégorie)
 * [Value](#value)
 * [Constant](#constant)
   * [Constant Function](#constant-function)
@@ -353,26 +353,26 @@ ajouterUn(2) // 3
 ajouterUn('une chaine') // Contrat non respecté : attendu int -> boolean
 ```
 
-## Category
+## Catégorie
 
-A category in category theory is a collection of objects and morphisms between them. In programming, typically types
-act as the objects and functions as morphisms.
+Une catégorie, dans la théorie des catégories, est un ensemble composé d'objets et des morphismes entre eux.
+En programmation, les types représentent généralement les objets et les fonctions représentent les morphismes.
 
-To be a valid category 3 rules must be met:
+Pour qu'une catégorie soit valide, trois règles doivent être respectées :
 
-1. There must be an identity morphism that maps an object to itself.
-    Where `a` is an object in some category,
-    there must be a function from `a -> a`.
-2. Morphisms must compose.
-    Where `a`, `b`, and `c` are objects in some category,
-    and `f` is a morphism from `a -> b`, and `g` is a morphism from `b -> c`;
-    `g(f(x))` must be equivalent to `(g • f)(x)`.
-3. Composition must be associative
-    `f • (g • h)` is the same as `(f • g) • h`
+1. Un morphisme d'identité, qui mappe un objet à lui-même, doit exister.
+    Si `a` est un objet d'une catégorie,
+    alors il doit y avoir une fonction de `a -> a`.
+2. Les morphismes doivent pouvoir être composés.
+    Si `a`, `b`, and `c` sont des objets d'une catégorie,
+    `f` est un morphisme de `a -> b` et `g` est un morphisme de `b -> c`,
+    alors `g(f(x))` doit être équivalent à `(g • f)(x)`.
+3. La composition doit être associative.
+    `f • (g • h)` est équivalent à `(f • g) • h`
 
-Since these rules govern composition at very abstract level, category theory is great at uncovering new ways of composing things.
+Puisque ces règles régissent la composition à un niveau très abstrait, la théorie des catégories est excellente pour découvrir de nouvelles façons de composer des choses.
 
-As an example we can define a category Max as a class
+À titre d'exemple, nous pouvons définir une catégorie Max en tant que classe
 ```js
 
 class Max {
@@ -396,9 +396,10 @@ class Max {
 new Max(2).compose(new Max(3)).compose(new Max(5)).id().id() // => Max(5)
 ```
 
-__Further reading__
+__Pour aller plus loin__
 
-* [Category Theory for Programmers](https://bartoszmilewski.com/2014/10/28/category-theory-for-programmers-the-preface/)
+* [Théorie des catégories](https://fr.wikipedia.org/wiki/Th%C3%A9orie_des_cat%C3%A9gories) sur Wikipédia
+* [Category Theory for Programmers (en)](https://bartoszmilewski.com/2014/10/28/category-theory-for-programmers-the-preface/)
 
 ## Value
 
@@ -792,7 +793,7 @@ partiallyAppliedAdds.ap(arg2) // [5, 6, 7, 8]
 
 ## Morphism
 
-A relationship between objects within a [category](#category). In the context of functional programming all functions are morphisms.
+A relationship between objects within a [category](#catégorie). In the context of functional programming all functions are morphisms.
 
 ### Homomorphism
 
