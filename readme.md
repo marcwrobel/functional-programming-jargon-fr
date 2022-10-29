@@ -59,15 +59,15 @@ __Table des matières__
 * [Comonade](#comonade)
 * [Composition de Kleisi](#composition-de-kleisi)
 * [Foncteur applicatif](#foncteur-applicatif)
-* [Morphism](#morphism)
-  * [Homomorphism](#homomorphism)
-  * [Endomorphism](#endomorphism)
-  * [Isomorphism](#isomorphism)
-  * [Catamorphism](#catamorphism)
-  * [Anamorphism](#anamorphism)
-  * [Hylomorphism](#hylomorphism)
-  * [Paramorphism](#paramorphism)
-  * [Apomorphism](#apomorphism)
+* [Morphisme](#morphisme)
+  * [Homomorphisme](#homomorphisme)
+  * [Endomorphisme](#endomorphisme)
+  * [Isomorphisme](#isomorphisme)
+  * [Catamorphisme](#catamorphisme)
+  * [Anamorphisme](#anamorphisme)
+  * [Hylomorphisme](#hylomorphisme)
+  * [Paramorphisme](#paramorphisme)
+  * [Apomorphisme](#apomorphisme)
 * [Setoid](#setoid)
 * [Semigroup](#semigroup)
 * [Foldable](#foldable)
@@ -590,7 +590,7 @@ Les lambdas sont souvent utilisées en tant qu'arguments de fonctions d'ordre su
 ;[1, 2].map((a) => a + 1) // [2, 3]
 ```
 
-Une lambda peut être affectée à une variable:
+Une lambda peut être affectée à une variable :
 
 ```js
 const ajouter1 = (a) => a + 1
@@ -676,7 +676,7 @@ La valeur neutre est alors un tableau vide `[]` :
 ;[1, 2].concat([]) // [1, 2]
 ```
 
-A titre de contre-exemple, la soustraction ne forme pas de monoïde car il n'y a pas de valeur neutre commutative :
+À titre de contre-exemple, la soustraction ne forme pas de monoïde car il n'y a pas de valeur neutre commutative :
 
 ```js
 0 - 4 === 4 - 0 // false
@@ -757,7 +757,7 @@ parseAndValidate('asdf') // => None
 parseAndValidate('999') // => None
 ```
 
-Ceci fonctionne car:
+Ceci fonctionne car :
 
  * [Option](#option) est une [monade](#monade)
  * `validatePositive` et `safeParseNum` renvoient le même type de monade (Option).
@@ -796,139 +796,135 @@ Cela vous donne un tableau de fonctions sur lequel vous pouvez appeler `ap` pour
 ajoutsPartiels.ap(arg2) // [5, 6, 7, 8]
 ```
 
-## Morphism
+## Morphisme
 
-A relationship between objects within a [category](#catégorie). In the context of functional programming all functions are morphisms.
+Une relation entre des objets au sein d'une [catégorie](#catégorie). En programmation fonctionnelle, toutes les fonctions sont des morphismes.
 
-### Homomorphism
+### Homomorphisme
 
-A function where there is a structural property that is the same in the input as well as the output.
+Une fonction où l'entrée et la sortie partagent une même propriété structurelle.
 
-For example, in a [Monoid](#monoïde) homomorphism both the input and the output are monoids even if their types are different. 
+Par exemple, dans un homomorphisme [monoïde](#monoïde), l'entrée et la sortie sont des monoïdes même si leurs types sont différents.
 
 ```js
-// toList :: [number] -> string
-const toList = (a) => a.join(', ')
+// convertir :: [number] -> string
+const convertir = (a) => a.join(', ')
 ```
 
-`toList` is a homomorphism because:
-* array is a monoid - has a `concat` operation and an identity value (`[]`)
-* string is a monoid - has a `concat` operation and an identity value (`''`)
+`convertir` est un homomorphisme car :
+* array est un monoïde - il possède une opération `concat` et une valeur neutre (`[]`),
+* string est un monoïde - il possède une opération `concat` et une valeur neutre (`''`).
 
-In this way, a homomorphism relates to whatever property you care about in the input and output of a transformation.
+Ainsi, un homomorphisme se rapporte à la propriété qui vous intéresse dans l'entrée et la sortie d'une fonction de transformation.
 
-[Endomorphisms](#endomorphism) and [Isomorphisms](#isomorphism) are examples of homomorphisms.
+Les [endomorphismes](#endomorphisme) et les [isomorphismes](#isomorphisme) sont des exemples d'homomorphisme.
 
-__Further Reading__ 
-* [Homomorphism | Learning Functional Programming in Go](https://subscription.packtpub.com/book/application-development/9781787281394/11/ch11lvl1sec90/homomorphism#:~:text=A%20homomorphism%20is%20a%20correspondence,pointing%20to%20it%20from%20A.)
+__Pour aller plus loin__ 
+* [Homomorphism | Learning Functional Programming in Go (en)](https://subscription.packtpub.com/book/application-development/9781787281394/11/ch11lvl1sec90/homomorphism#:~:text=A%20homomorphism%20is%20a%20correspondence,pointing%20to%20it%20from%20A.)
 
+### Endomorphisme
 
-
-### Endomorphism
-
-A function where the input type is the same as the output. Since the types are identical, endomorphisms are also [homomorphisms](#homomorphism).
+Une fonction où le type de l'entrée est identique à celui de sortie.
 
 ```js
-// uppercase :: String -> String
-const uppercase = (str) => str.toUpperCase()
+// majuscule :: String -> String
+const enMajuscule = (str) => str.toUpperCase()
 
-// decrement :: Number -> Number
-const decrement = (x) => x - 1
+// decrementer :: Number -> Number
+const decrementer = (x) => x - 1
 ```
 
-### Isomorphism
+### Isomorphisme
 
-A morphism made of a pair of transformations between 2 types of objects that is structural in nature and no data is lost.  
+Un morphisme pour lequel il existe un morphisme inverse. Ce type de morphismes préserve la structure des objets.
 
-For example, 2D coordinates could be stored as an array `[2,3]` or object `{x: 2, y: 3}`.
+Par exemple, des coordonnées 2D peuvent être stockées sous forme de tableau (`[2,3]`) ou d'objet (`{x: 2, y: 3}`).
 
 ```js
-// Providing functions to convert in both directions makes the 2D coordinate structures isomorphic.
-const pairToCoords = (pair) => ({ x: pair[0], y: pair[1] })
+// Fonctions de conversions
+const paireVersCoords = (paire) => ({ x: paire[0], y: paire[1] })
+const coordsVersPaire = (coords) => [coords.x, coords.y]
 
-const coordsToPair = (coords) => [coords.x, coords.y]
-
-coordsToPair(pairToCoords([1, 2])) // [1, 2]
-
-pairToCoords(coordsToPair({ x: 1, y: 2 })) // {x: 1, y: 2}
+coordsVersPaire(paireVersCoords([1, 2])) // [1, 2]
+paireVersCoords(coordsVersPaire({ x: 1, y: 2 })) // {x: 1, y: 2}
 ```
 
-Isomorphisms are an interesting example of [morphism](#morphism) because more than single function is necessary for it to be satisfied. Isomorphisms are also [homomorphisms](#homomorphism) since both input and output types share the property of being reversible.
+Les isomorphismes sont aussi des [homomorphismes](#homomorphisme) puisque les types d'entrée et de sortie sont réversibles.
 
-### Catamorphism
+### Catamorphisme
 
-A function which deconstructs a structure into a single value. `reduceRight` is an example of a catamorphism for array structures.
+Une fonction qui déconstruit une structure en une seule valeur. `reduceRight` est un exemple de catamorphisme pour les structures de type tableau.
 
 ```js
-// sum is a catamorphism from [Number] -> Number
-const sum = xs => xs.reduceRight((acc, x) => acc + x, 0)
+// somme est un catamorphisme de [Number] -> Number
+const somme = xs => xs.reduceRight((acc, x) => acc + x, 0)
 
-sum([1, 2, 3, 4, 5]) // 15
+somme([1, 2, 3, 4, 5]) // 15
 ```
 
-### Anamorphism
+### Anamorphisme
 
-A function that builds up a structure by repeatedly applying a function to its argument. `unfold` is an example which generates an array by from a function and a seed value. This is the opposite of a [catamorphism](#catamorphism). You can think of this as an anamorphism builds up a structure and catamorphism breaks it down.
+Une fonction qui construit une structure en appliquant de manière répétée une autre fonction à son argument. `unfold` est un exemple qui génère un tableau par à partir d'une fonction et d'une valeur initiale. C'est le contraire d'un [catamorphisme](#catamorphisme) : un anamorphisme construit une structure et le catamorphisme la décompose.
 
 ```js
-const unfold = (f, seed) => {
-  function go (f, seed, acc) {
-    const res = f(seed)
-    return res ? go(f, res[1], acc.concat([res[0]])) : acc
+const deplier = (f, valeurInitiale) => {
+  function appliquer (f, valeurInitiale, acc) {
+    const res = f(valeurInitiale)
+    return res ? appliquer(f, res[1], acc.concat([res[0]])) : acc
   }
-  return go(f, seed, [])
+  return appliquer(f, valeurInitiale, [])
 }
 ```
 
 ```js
-const countDown = n => unfold((n) => {
+const compteARebour = n => deplier((n) => {
   return n <= 0 ? undefined : [n, n - 1]
 }, n)
 
-countDown(5) // [5, 4, 3, 2, 1]
+compteARebour(5) // [5, 4, 3, 2, 1]
 ```
 
-### Hylomorphism
+### Hylomorphisme
 
-The function which composes an [anamorphism](#anamorphism) followed by a [catamorphism](#catamorphism).
+Une fonction récursive composée d'un [anamorphisme](#anamorphisme) suivi d'un [catamorphisme](#catamorphisme).
 
 ```js
-const sumUpToX = (x) => sum(countDown(x))
-sumUpToX(5) // 15
+const sommeJusquaX = (x) => somme(compteARebour(x))
+sommeJusquaX(5) // 15
 ```
 
-### Paramorphism
+### Paramorphisme
 
-A function just like `reduceRight`. However, there's a difference:
+Une fonction similaire `reduceRight`, bien qu'il y ait une différence :
 
-In paramorphism, your reducer's arguments are the current value, the reduction of all previous values, and the list of values that formed that reduction.
+Dans un paramorphisme, les arguments de votre réducteur sont la valeur actuelle, la réduction de toutes les valeurs précédentes et la liste des valeurs qui ont formé cette réduction.
 
 ```js
-// Obviously not safe for lists containing `undefined`,
-// but good enough to make the point.
-const para = (reducer, accumulator, elements) => {
-  if (elements.length === 0) { return accumulator }
+// Dangereux avec des listes contenant `undefined`,
+// mais suffisant pour notre exemple.
+const paramorphisme = (reducteur, accumulateur, elements) => {
+  if (elements.length === 0) { return accumulateur }
 
-  const head = elements[0]
-  const tail = elements.slice(1)
+  const premierElement = elements[0]
+  const autresElements = elements.slice(1)
 
-  return reducer(head, tail, para(reducer, accumulator, tail))
+  return reducteur(premierElement, autresElements, paramorphisme(reducteur, accumulateur, autresElements))
 }
 
-const suffixes = list => para(
+const suffixes = liste => paramorphisme(
   (x, xs, suffxs) => [xs, ...suffxs],
   [],
-  list
+  liste
 )
 
 suffixes([1, 2, 3, 4, 5]) // [[2, 3, 4, 5], [3, 4, 5], [4, 5], [5], []]
 ```
 
-The third parameter in the reducer (in the above example, `[x, ... xs]`) is kind of like having a history of what got you to your current acc value.
+Le troisième paramètre du réducteur (dans l'exemple ci-dessus, `[x, ... xs]`) donne une sorte d'historique de ce qui à conduit à la valeur `accumulateur` actuelle.
 
-### Apomorphism
+### Apomorphisme
 
-The opposite of paramorphism, just as anamorphism is the opposite of catamorphism. With paramorphism, you retain access to the accumulator and what has been accumulated, apomorphism lets you `unfold` with the potential to return early.
+Le contraire du paramorphisme, tout comme l'anamorphisme est le contraire du catamorphisme. Avec le paramorphisme, l'accès à l'accumulateur et à ce qui a été accumulé sont conservés. L'apomorphisme permet de _déplier (`unfold`)_ et laisse la possibilité de retourner une valeur plus tôt.
 
 ## Setoid
 
