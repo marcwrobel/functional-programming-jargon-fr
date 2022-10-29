@@ -960,11 +960,11 @@ Un demi-groupe (aussi appelé semi-groupe), est un objet doté d'une fonction `c
 
 ## Foldable
 
-An object that has a `reduce` function that applies a function against an accumulator and each element in the array (from left to right) to reduce it to a single value.
+Un objet doté d'une fonction `reduce` qui applique une fonction à un accumulateur et à chaque élément du tableau (de gauche à droite) pour le réduire à une seule valeur.
 
 ```js
-const sum = (list) => list.reduce((acc, val) => acc + val, 0)
-sum([1, 2, 3]) // 6
+const somme = (liste) => liste.reduce((acc, val) => acc + val, 0)
+somme([1, 2, 3]) // 6
 ```
 
 ## Lens ##
