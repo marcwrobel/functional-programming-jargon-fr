@@ -57,8 +57,8 @@ __Table des matières__
 * [Monoïde](#monoïde)
 * [Monade](#monade)
 * [Comonade](#comonade)
-* [Kleisi Composition](#kleisi-composition)
-* [Applicative Functor](#applicative-functor)
+* [Composition de Kleisi](#composition-de-kleisi)
+* [Foncteur applicatif](#foncteur-applicatif)
 * [Morphism](#morphism)
   * [Homomorphism](#homomorphism)
   * [Endomorphism](#endomorphism)
@@ -511,7 +511,7 @@ Array.of(1) // [1]
 
 ## Relèvement
 
-Le relèvement est l'action de prendre une valeur et de la mettre dans un objet tel qu'un [foncteur](#foncteur-pointé). Si vous relevez une fonction dans un [foncteur applicatif](#applicative-functor), vous pouvez l'appliquer à valeurs qui se trouvent également dans ce foncteur.
+Le relèvement est l'action de prendre une valeur et de la mettre dans un objet tel qu'un [foncteur](#foncteur-pointé). Si vous relevez une fonction dans un [foncteur applicatif](#foncteur-applicatif), vous pouvez l'appliquer aux valeurs qui se trouvent également dans ce foncteur.
 
 Certaines implémentations ont une fonction appelée `lift` ou `liftA2` pour faciliter l'exécution de fonctions sur des foncteurs.
 
@@ -763,37 +763,37 @@ Ceci fonctionne car:
  * `validatePositive` et `safeParseNum` renvoient le même type de monade (Option).
  * Le type d'argument de `validatePositive` correspond au retour non encapsulé de `safeParseNum`.
 
-## Applicative Functor
+## Foncteur applicatif
 
-An applicative functor is an object with an `ap` function. `ap` applies a function in the object to a value in another object of the same type.
+Un foncteur applicatif est un objet avec une fonction `ap`. `ap` applique une fonction de l'objet à une valeur d'un autre objet du même type.
 
 ```js
-// Implementation
+// Implémentation
 Array.prototype.ap = function (xs) {
   return this.reduce((acc, f) => acc.concat(xs.map(f)), [])
 }
 
-// Example usage
+// Exemple d'utilisation
 ;[(a) => a + 1].ap([1]) // [2]
 ```
 
-This is useful if you have two objects and you want to apply a binary function to their contents.
+C'est utile quand vous avez deux objets et que vous souhaitez appliquer une fonction binaire à leurs contenus.
 
 ```js
-// Arrays that you want to combine
+// Tableaux que vous souhaitez fusionner
 const arg1 = [1, 3]
 const arg2 = [4, 5]
 
-// combining function - must be curried for this to work
-const add = (x) => (y) => x + y
+// fonction de fusion - doit être curryfiée pour que cela fonctionne
+const ajouter = (x) => (y) => x + y
 
-const partiallyAppliedAdds = [add].ap(arg1) // [(y) => 1 + y, (y) => 3 + y]
+const ajoutsPartiels = [ajouter].ap(arg1) // [(y) => 1 + y, (y) => 3 + y]
 ```
 
-This gives you an array of functions that you can call `ap` on to get the result:
+Cela vous donne un tableau de fonctions sur lequel vous pouvez appeler `ap` pour obtenir le résultat final :
 
 ```js
-partiallyAppliedAdds.ap(arg2) // [5, 6, 7, 8]
+ajoutsPartiels.ap(arg2) // [5, 6, 7, 8]
 ```
 
 ## Morphism
