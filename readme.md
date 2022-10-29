@@ -68,7 +68,7 @@ __Table des matières__
   * [Hylomorphisme](#hylomorphisme)
   * [Paramorphisme](#paramorphisme)
   * [Apomorphisme](#apomorphisme)
-* [Setoid](#setoid)
+* [Setoïde](#setoïde)
 * [Semigroup](#semigroup)
 * [Foldable](#foldable)
 * [Lens](#lens)
@@ -926,19 +926,19 @@ Le troisième paramètre du réducteur (dans l'exemple ci-dessus, `[x, ... xs]`)
 
 Le contraire du paramorphisme, tout comme l'anamorphisme est le contraire du catamorphisme. Avec le paramorphisme, l'accès à l'accumulateur et à ce qui a été accumulé sont conservés. L'apomorphisme permet de _déplier (`unfold`)_ et laisse la possibilité de retourner une valeur plus tôt.
 
-## Setoid
+## Setoïde
 
-An object that has an `equals` function which can be used to compare other objects of the same type.
+Un objet qui a une fonction `equals` qui peut être utilisée pour le comparer à d'autres objets du même type.
 
-Make array a setoid:
+Pour faire de `array` un setoïde :
 
 ```js
 Array.prototype.equals = function (arr) {
-  const len = this.length
-  if (len !== arr.length) {
+  const taille = this.length
+  if (taille !== arr.length) {
     return false
   }
-  for (let i = 0; i < len; i++) {
+  for (let i = 0; i < taille; i++) {
     if (this[i] !== arr[i]) {
       return false
     }
