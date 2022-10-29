@@ -69,7 +69,7 @@ __Table des matières__
   * [Paramorphisme](#paramorphisme)
   * [Apomorphisme](#apomorphisme)
 * [Setoïde](#setoïde)
-* [Semigroup](#semigroup)
+* [Demi-groupe](#demi-groupe)
 * [Foldable](#foldable)
 * [Lens](#lens)
 * [Type Signatures](#type-signatures)
@@ -638,7 +638,7 @@ randIter.next() // Chaque exécution donne une valeur aléatoire, l'expression e
 
 ## Monoïde
 
-Un objet avec une fonction qui « combine » cet objet avec un autre du même type ([semi-groupe](#semigroup)) qui a de plus une valeur neutre.
+Un objet avec une fonction qui « combine » cet objet avec un autre du même type ([demi-groupe](#demi-groupe)) qui a de plus une valeur neutre.
 
 Un exemple de monoïde simple est l'addition de nombres :
 
@@ -950,9 +950,9 @@ Array.prototype.equals = function (arr) {
 ;[1, 2].equals([0]) // false
 ```
 
-## Semigroup
+## Demi-groupe
 
-An object that has a `concat` function that combines it with another object of the same type.
+Un demi-groupe (aussi appelé semi-groupe), est un objet doté d'une fonction `concat` qui permet de le combiner avec un autre objet du même type.
 
 ```js
 ;[1].concat([2]) // [1, 2]
