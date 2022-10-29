@@ -71,7 +71,7 @@ __Table des matières__
 * [Setoïde](#setoïde)
 * [Demi-groupe](#demi-groupe)
 * [Foldable](#foldable)
-* [Lens](#lens)
+* [Lentille](#lentille)
 * [Type Signatures](#type-signatures)
 * [Algebraic data type](#algebraic-data-type)
   * [Sum type](#sum-type)
@@ -967,41 +967,41 @@ const somme = (liste) => liste.reduce((acc, val) => acc + val, 0)
 somme([1, 2, 3]) // 6
 ```
 
-## Lens
+## Lentille
 
-Une structure (souvent un objet ou une fonction) qui associe un _getter_ et un _setter_ non mutable pour d'autres
-structures.
+Une lentille (lens en anglais) est une structure (souvent un objet ou une fonction) qui associe un _getter_ et un
+_setter_ non mutable et est utilisé sur d'autres structures.
 
 ```js
-// En utilisant les [lens de Ramda (en)](http://ramdajs.com/docs/#lens)
-const nomLens = R.lens(
+// En utilisant les [lentilles de Ramda (en)](http://ramdajs.com/docs/#lens)
+const lentilleSurLeNom = R.lens(
   // getter pour la propriété nom
-  (obj) => obj.name,
+  (obj) => obj.nom,
   // setter pour la propriété nom
-  (val, obj) => Object.assign({}, obj, { name: val })
+  (val, obj) => Object.assign({}, obj, { nom: val })
 )
 ```
 
-Le fait d'avoir la paire get et set pour une structure donnée permet quelques fonctionnalités clés.
+Le fait d'avoir des accesseurs pour une structure donnée permet quelques fonctionnalités clés.
 
 ```js
 const personne = { nom: 'Gertrude Blanch' }
 
 // utilisation du getter
-R.view(nomLens, personne) // 'Gertrude Blanch'
+R.view(lentilleNom, personne) // 'Gertrude Blanch'
 
 // utilisation du setter
-R.set(nomLens, 'Shafi Goldwasser', personne) // {nom: 'Shafi Goldwasser'}
+R.set(lentilleNom, 'Shafi Goldwasser', personne) // {nom: 'Shafi Goldwasser'}
 
 // applique la fonction `majuscule` sur la valeur de la structure
-R.over(nomLens, majuscule, personne) // {nom: 'GERTRUDE BLANCH'}
+R.over(lentilleNom, majuscule, personne) // {nom: 'GERTRUDE BLANCH'}
 ```
 
 Les lenses sont aussi composable. Cela permet d'effectuer facilement des mises à jour de données profondément imbriquées.
 
 ```js
-// Ce lens se concentre sur le premier élément d'un tableau non vide
-const premierLens = R.lens(
+// Cette lentille se concentre sur le premier élément d'un tableau non vide
+const lentillePremierElement = R.lens(
   // getter sur le premier élément du tableau
   xs => xs[0],
   // setter non mutable du premier élément du tableau
@@ -1011,7 +1011,7 @@ const premierLens = R.lens(
 const personnes = [{ nom: 'Gertrude Blanch' }, { nom: 'Shafi Goldwasser' }]
 
 // Malgré ce que vous pourriez supposer, les lens se composent de gauche à droite.
-R.over(compose(premierLens, nomLens), majuscule, personnes) // [{'nom': 'GERTRUDE BLANCH'}, {'nom': 'Shafi Goldwasser'}]
+R.over(compose(lentillePremierElement, lentilleNom), majuscule, personnes) // [{'nom': 'GERTRUDE BLANCH'}, {'nom': 'Shafi Goldwasser'}]
 ```
 
 Autres implémentations :
