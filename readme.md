@@ -967,55 +967,56 @@ const somme = (liste) => liste.reduce((acc, val) => acc + val, 0)
 somme([1, 2, 3]) // 6
 ```
 
-## Lens ##
-A lens is a structure (often an object or function) that pairs a getter and a non-mutating setter for some other data
-structure.
+## Lens
+
+Une structure (souvent un objet ou une fonction) qui associe un _getter_ et un _setter_ non mutable pour d'autres
+structures.
 
 ```js
-// Using [Ramda's lens](http://ramdajs.com/docs/#lens)
-const nameLens = R.lens(
-  // getter for name property on an object
+// En utilisant les [lens de Ramda (en)](http://ramdajs.com/docs/#lens)
+const nomLens = R.lens(
+  // getter pour la propriété nom
   (obj) => obj.name,
-  // setter for name property
+  // setter pour la propriété nom
   (val, obj) => Object.assign({}, obj, { name: val })
 )
 ```
 
-Having the pair of get and set for a given data structure enables a few key features.
+Le fait d'avoir la paire get et set pour une structure donnée permet quelques fonctionnalités clés.
 
 ```js
-const person = { name: 'Gertrude Blanch' }
+const personne = { nom: 'Gertrude Blanch' }
 
-// invoke the getter
-R.view(nameLens, person) // 'Gertrude Blanch'
+// utilisation du getter
+R.view(nomLens, personne) // 'Gertrude Blanch'
 
-// invoke the setter
-R.set(nameLens, 'Shafi Goldwasser', person) // {name: 'Shafi Goldwasser'}
+// utilisation du setter
+R.set(nomLens, 'Shafi Goldwasser', personne) // {nom: 'Shafi Goldwasser'}
 
-// run a function on the value in the structure
-R.over(nameLens, uppercase, person) // {name: 'GERTRUDE BLANCH'}
+// applique la fonction `majuscule` sur la valeur de la structure
+R.over(nomLens, majuscule, personne) // {nom: 'GERTRUDE BLANCH'}
 ```
 
-Lenses are also composable. This allows easy immutable updates to deeply nested data.
+Les lenses sont aussi composable. Cela permet d'effectuer facilement des mises à jour de données profondément imbriquées.
 
 ```js
-// This lens focuses on the first item in a non-empty array
-const firstLens = R.lens(
-  // get first item in array
+// Ce lens se concentre sur le premier élément d'un tableau non vide
+const premierLens = R.lens(
+  // getter sur le premier élément du tableau
   xs => xs[0],
-  // non-mutating setter for first item in array
+  // setter non mutable du premier élément du tableau
   (val, [__, ...xs]) => [val, ...xs]
 )
 
-const people = [{ name: 'Gertrude Blanch' }, { name: 'Shafi Goldwasser' }]
+const personnes = [{ nom: 'Gertrude Blanch' }, { nom: 'Shafi Goldwasser' }]
 
-// Despite what you may assume, lenses compose left-to-right.
-R.over(compose(firstLens, nameLens), uppercase, people) // [{'name': 'GERTRUDE BLANCH'}, {'name': 'Shafi Goldwasser'}]
+// Malgré ce que vous pourriez supposer, les lens se composent de gauche à droite.
+R.over(compose(premierLens, nomLens), majuscule, personnes) // [{'nom': 'GERTRUDE BLANCH'}, {'nom': 'Shafi Goldwasser'}]
 ```
 
-Other implementations:
-* [partial.lenses](https://github.com/calmm-js/partial.lenses) - Tasty syntax sugar and a lot of powerful features
-* [nanoscope](http://www.kovach.me/nanoscope/) - Fluent-interface
+Autres implémentations :
+* [partial.lenses (en)](https://github.com/calmm-js/partial.lenses)
+* [nanoscope (en)](http://www.kovach.me/nanoscope/)
 
 ## Type Signatures
 
