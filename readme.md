@@ -78,8 +78,8 @@ __Table des matières__
   * [Types produit](#types-produit)
 * [Option](#option)
 * [Fonction](#fonction)
-* [Partial function](#partial-function)
-  * [Dealing with partial functions](#dealing-with-partial-functions)
+* [Fonction partielle](#fonction-partielle)
+  * [Manipuler des fonctions partielles](#manipuler-des-fonctions-partielles)
 * [Total Function](#total-function)
 * [Functional Programming Libraries in JavaScript](#functional-programming-libraries-in-javascript)
 
@@ -1155,75 +1155,81 @@ const fois2 = n => n * 2
 ;[1, 2, 3].map(fois2) // [2, 4, 6]
 ```
 
-## Partial function
-A partial function is a [function](#function) which is not defined for all arguments - it might return an unexpected result or may never terminate. Partial functions add cognitive overhead, they are harder to reason about and can lead to runtime errors. Some examples:
+## Fonction partielle
+
+Une fonction partielle est une [function](#fonction) qui n'est pas définie pour tous les arguments - elle peut renvoyer un résultat inattendu ou ne jamais se terminer. Les fonctions partielles ajoutent de la surcharge cognitive, elles sont plus difficiles à appréhender et peuvent entraîner des erreurs d'exécution.
+
 ```js
-// example 1: sum of the list
-// sum :: [Number] -> Number
-const sum = arr => arr.reduce((a, b) => a + b)
-sum([1, 2, 3]) // 6
+// exemple 1 : somme d'une liste
+// somme :: [Number] -> Number
+const somme = nombres => nombres.reduce((a, b) => a + b)
+somme([1, 2, 3]) // 6
 sum([]) // TypeError: Reduce of empty array with no initial value
 
-// example 2: get the first item in list
-// first :: [A] -> A
-const first = a => a[0]
-first([42]) // 42
-first([]) // undefined
-// or even worse:
-first([[42]])[0] // 42
-first([])[0] // Uncaught TypeError: Cannot read property '0' of undefined
+// exemple 2 : récupération du premier élément d'une liste
+// premier :: [A] -> A
+const premier = a => a[0]
+premier([42]) // 42
+premier([]) // undefined
+// ou pire
+premier([[42]])[0] // 42
+premier([])[0] // Uncaught TypeError: Cannot read property '0' of undefined
 
-// example 3: repeat function N times
-// times :: Number -> (Number -> Number) -> Number
-const times = n => fn => n && (fn(n), times(n - 1)(fn))
-times(3)(console.log)
+// exemple 3 : repéter une fonction N fois
+// repeter :: Number -> (Number -> Number) -> Number
+const repeter = n => fn => n && (fn(n), times(n - 1)(fn))
+repeter(3)(console.log)
 // 3
 // 2
 // 1
-times(-1)(console.log)
-// RangeError: Maximum call stack size exceeded
+repeter(-1)(console.log) // RangeError: Maximum call stack size exceeded
 ```
 
-### Dealing with partial functions
-Partial functions are dangerous as they need to be treated with great caution. You might get an unexpected (wrong) result or run into runtime errors. Sometimes a partial function might not return at all. Being aware of and treating all these edge cases accordingly can become very tedious.
-Fortunately a partial function can be converted to a regular (or total) one. We can provide default values or use guards to deal with inputs for which the (previously) partial function is undefined. Utilizing the [`Option`](#Option) type, we can yield either `Some(value)` or `None` where we would otherwise have behaved unexpectedly:
+### Manipuler des fonctions partielles
+
+Les fonctions partielles sont dangereuses et doivent être utilisées avec prudence. Vous pouvez en effet obtenir un résultat inattendu (erroné), rencontrer des erreurs d'exécution, ou même ne jamais avoir de résultat lorsque vous les utilisez. Connaitre et traiter tous ces cas aux limites peut donc devenir très fastidieux.
+
+Heureusement, il est possible de transformer une fonction partielle en fonction traditionnelle (ou fonction totale).
+On peut en effet utiliser des valeurs par défaut ou des garde-fous pour traiter les entrées pour lesquelles la fonction partielle n'a pas de comportement défini.
+En utilisant par exemple le type ['Option'](#Option), nous pouvons obtenir soit `Some(value)` ou `None` là où la fonction se serait comportée de manière inattendue. 
+
 ```js
-// example 1: sum of the list
-// we can provide default value so it will always return result
-// sum :: [Number] -> Number
-const sum = arr => arr.reduce((a, b) => a + b, 0)
-sum([1, 2, 3]) // 6
-sum([]) // 0
+// exemple 1: somme d'une liste
+// on peut fournir une valeur par défaut afin que la fonction renvoie toujours un résultat
+// somme :: [Number] -> Number
+const somme = arr => arr.reduce((a, b) => a + b, 0)
+somme([1, 2, 3]) // 6
+somme([]) // 0
 
-// example 2: get the first item in list
-// change result to Option
-// first :: [A] -> Option A
-const first = a => a.length ? Some(a[0]) : None()
-first([42]).map(a => console.log(a)) // 42
-first([]).map(a => console.log(a)) // console.log won't execute at all
-// our previous worst case
-first([[42]]).map(a => console.log(a[0])) // 42
-first([]).map(a => console.log(a[0])) // won't execte, so we won't have error here
-// more of that, you will know by function return type (Option)
-// that you should use `.map` method to access the data and you will never forget
-// to check your input because such check become built-in into the function
+// exemple 2: récupération du premier élément d'une liste
+// on peut utiliser le type Option
+// premier :: [A] -> Option A
+const premier = a => a.length ? Some(a[0]) : None()
+premier([42]).map(a => console.log(a)) // 42
+premier([]).map(a => console.log(a)) // console.log ne s'exécutera pas
+// et avec le pire scénario
+premier([[42]]).map(a => console.log(a[0])) // 42
+premier([]).map(a => console.log(a[0])) // console.log ne s'exécutera pas, et il n'y aura pas d'erreur
+// De plus, vous saurez grâce au type de retour (Option) que vous devez utiliser `.map`
+// pour accèder à la valeur de retour et vous n'oublierez plus de vérifier l'argument
+// car cela devient obligatoire.
 
-// example 3: repeat function N times
-// we should make function always terminate by changing conditions:
-// times :: Number -> (Number -> Number) -> Number
-const times = n => fn => n > 0 && (fn(n), times(n - 1)(fn))
-times(3)(console.log)
+// exemple 3: repéter une fonction N fois
+// on fait en sorte que la fonction se termine toujours en changeant les conditions
+// repeter :: Number -> (Number -> Number) -> Number
+const repeter = n => fn => n > 0 && (fn(n), times(n - 1)(fn))
+repeter(3)(console.log)
 // 3
 // 2
 // 1
-times(-1)(console.log)
-// won't execute anything
+repeter(-1)(console.log) // ne fera rien
 ```
-Making your partial functions total ones, these kinds of runtime errors can be prevented. Always returning a value will also make for code that is both easier to maintain and to reason about.
+
+En rendant vos fonctions partielles totales, les erreurs d'exécution peuvent être évités. Toujours renvoyer une valeur permet de plus d'obtenir du code qui est à la fois plus facile à comprendre et à maintenir.
 
 ## Total Function
 
-A function which returns a valid result for all inputs defined in its type. This is as opposed to [Partial Functions](#partial-function) which may throw an error, return an unexpected result, or fail to terminate.
+A function which returns a valid result for all inputs defined in its type. This is as opposed to [Partial Functions](#fonction-partielle) which may throw an error, return an unexpected result, or fail to terminate.
 
 ## Functional Programming Libraries in JavaScript
 
