@@ -8,7 +8,8 @@ préalable être intégrées à
 avant d'être reprises sur ce dépôt.
 
 Le contenu de ce dépôt se base sur le commit
-[hemanth/functional-programming-jargon@69d1b25](https://github.com/hemanth/functional-programming-jargon/commit/69d1b25308f0ff0c5e98234d5d6ccea26aa13388).
+[hemanth/functional-programming-jargon@69d1b25](https://github.com/hemanth/functional-programming-jargon/commit/69d1b25308f0ff0c5e98234d5d6ccea26aa13388)
+.
 
 # Conventions
 
@@ -19,3 +20,4 @@ Le contenu de ce dépôt se base sur le commit
 - Les termes ou expressions qui n'ont pas d'équivalents en français ne seront pas traduits.
 - Les termes en anglais doivent être ajoutés en complément des termes français. Une grande partie de la literature
   informatique est en anglais, donc il est utile de connaitre les termes dans les deux langues.
+- Les documents markdown doivent être formatés selon ce qui est indiqué dans le fichier [EditorConfig](/.editorconfig).
