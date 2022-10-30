@@ -3,9 +3,9 @@
 > Ce document est une traduction française de
 > [hemanth/functional-programming-jargon](https://github.com/hemanth/functional-programming-jargon).
 
-La programmation fonctionnelle offre de nombreux avantages et sa popularité n'a cessé d'augmenter en conséquence.
+La programmation fonctionnelle offre de nombreux avantages et sa popularité n’a cessé d’augmenter en conséquence.
 Cependant, chaque paradigme de programmation défini son propre jargon et la programmation fonctionnelle ne fait pas
-exception. En fournissant un glossaire, nous espérons faciliter l'apprentissage de la programmation fonctionnelle.
+exception. En fournissant un glossaire, nous espérons faciliter l’apprentissage de la programmation fonctionnelle.
 
 Les exemples sont écrits en JavaScript (ES2015).
 [Pourquoi JavaScript ?](https://github.com/hemanth/functional-programming-jargon/wiki/Why-JavaScript%3F)
@@ -32,7 +32,7 @@ __Table des matières__
 <!-- RM(noparent,notop) -->
 
 * [Arité](#arité)
-* [Fonction d'ordre supérieur](#fonction-dordre-supérieur)
+* [Fonction d’ordre supérieur](#fonction-dordre-supérieur)
 * [Fermeture](#fermeture)
 * [Application partielle](#application-partielle)
 * [Curryfication](#curryfication)
@@ -93,22 +93,22 @@ __Table des matières__
 
 ## Arité
 
-Le nombre d'arguments qu'une fonction requiert. On utilise aussi des mots comme unaire, binaire, ternaire, etc.
+Le nombre d’arguments qu’une fonction requiert. On utilise aussi des mots comme unaire, binaire, ternaire, etc.
 
 ```js
 const somme = (a, b) => a + b
-// L'arité de somme est 2 (binaire)
+// L’arité de somme est 2 (binaire)
 const inc = a => a + 1
-// L'arité de inc est 1 (unaire)
+// L’arité de inc est 1 (unaire)
 const zero = () => 0
-// L'arité de zero est 0 (nullaires)
+// L’arité de zero est 0 (nullaires)
 ```
 
 __Pour aller plus loin__
 
 * [Arité](https://fr.wikipedia.org/wiki/Arit%C3%A9) sur Wikipédia
 
-## Fonction d'ordre supérieur
+## Fonction d’ordre supérieur
 
 Une fonction qui prend une fonction en argument et/ou qui renvoie une fonction.
 
@@ -126,7 +126,7 @@ filtre(est(Number), [0, '1', 2, null]) // [0, 2]
 
 ## Fermeture
 
-Une fermeture (closure en anglais) est une fonction accompagnée de l'ensemble des variables locales qu'elle a capturées
+Une fermeture (closure en anglais) est une fonction accompagnée de l’ensemble des variables locales qu’elle a capturées
 au moment où elle a été définie. Ces variables restent alors accessibles même après que le programme soit sorti du bloc
 où elles ont été définies.
 
@@ -174,16 +174,16 @@ Vous pouvez aussi utiliser `Function.prototype.bind` pour appliquer partiellemen
 const cinqPlus = ajouter3.bind(null, 2, 3) // (c) => 2 + 3 + c
 ```
 
-L'application partielle permet de créer des fonctions plus simples à partir de fonctions plus complexes en y intégrant
+L’application partielle permet de créer des fonctions plus simples à partir de fonctions plus complexes en y intégrant
 les données au fur et à mesure où elles sont disponibles. Les fonctions [curryfiées](#curryfication) sont
 automatiquement partiellement appliquées.
 
 ## Curryfication
 
-Processus de conversion d'une fonction qui prend plusieurs arguments en une fonction qui les prend un à la fois.
+Processus de conversion d’une fonction qui prend plusieurs arguments en une fonction qui les prend un à la fois.
 
-Chaque fois que la fonction est appelée, elle n'accepte qu'un seul argument et retourne une fonction qui prend un
-argument jusqu'à ce que tous les arguments soient passés.
+Chaque fois que la fonction est appelée, elle n’accepte qu’un seul argument et retourne une fonction qui prend un
+argument jusqu’à ce que tous les arguments soient passés.
 
 ```js
 const somme = (a, b) => a + b
@@ -199,9 +199,9 @@ ajouter2(10) // 12
 
 ## Auto-curryfication
 
-La transformation d'une fonction qui prend plusieurs arguments en une fonction qui, si on lui donne moins que son nombre
-correct d'arguments, renvoie une fonction qui prend le reste des arguments. Lorsque la fonction est appelée avec le
-nombre correct d'arguments, elle est ensuite évaluée.
+La transformation d’une fonction qui prend plusieurs arguments en une fonction qui, si on lui donne moins que son nombre
+correct d’arguments, renvoie une fonction qui prend le reste des arguments. Lorsque la fonction est appelée avec le
+nombre correct d’arguments, elle est ensuite évaluée.
 
 Lodash et Ramda ont une fonction `curry` qui marche comme suit.
 
@@ -217,12 +217,12 @@ sommeCurryfiee(1)(2) // 3
 __Pour aller plus loin__
 
 * [Favoring Curry (en)](http://fr.umio.us/favoring-curry/)
-* [Hey Underscore, You're Doing It Wrong! (en)](https://www.youtube.com/watch?v=m3svKOdZijA)
+* [Hey Underscore, You’re Doing It Wrong! (en)](https://www.youtube.com/watch?v=m3svKOdZijA)
 
 ## Composition de fonctions
 
-L'acte de mettre deux fonctions ensemble pour en former une troisième, où la sortie d'une fonction est l'entrée de
-l'autre. C'est l'une des idées les plus importantes de la programmation fonctionnelle.
+L’acte de mettre deux fonctions ensemble pour en former une troisième, où la sortie d’une fonction est l’entrée de
+l’autre. C’est l’une des idées les plus importantes de la programmation fonctionnelle.
 
 ```js
 const composer = (f, g) => (a) => f(g(a)) // Définition
@@ -232,7 +232,7 @@ floorEtToString(121.212121) // '121'
 
 ## Continuation
 
-À tout moment d'un programme, la partie du code qui n'a pas encore été exécutée est appelée _continuation_.
+À tout moment d’un programme, la partie du code qui n’a pas encore été exécutée est appelée _continuation_.
 
 ```js
 const afficher = (nombre) => console.log(`Nombre ${nombre}`)
@@ -246,8 +246,8 @@ ajouterUnEtContinuer(2, afficher) // 'Nombre 3'
 ```
 
 Les continuations sont souvent observées en programmation asynchrone lorsque le programme doit attendre de recevoir des
-données avant de pouvoir continuer à s'exécuter. La réponse est souvent transmise au reste du programme, qui est la
-continuation, une fois qu'elle a été reçue.
+données avant de pouvoir continuer à s’exécuter. La réponse est souvent transmise au reste du programme, qui est la
+continuation, une fois qu’elle a été reçue.
 
 ```js
 const poursuivreLeProgrammeAvec = (donnees) => {
@@ -256,7 +256,7 @@ const poursuivreLeProgrammeAvec = (donnees) => {
 
 lireFichierAsync('chemin/vers/fichier', (err, reponse) => {
   if (err) {
-    // prend en charge l'erreur
+    // prend en charge l’erreur
     return
   }
   poursuivreLeProgrammeAvec(reponse)
@@ -265,8 +265,8 @@ lireFichierAsync('chemin/vers/fichier', (err, reponse) => {
 
 ## Fonction pure
 
-Une fonction est pure si sa valeur de retour n'est déterminée que par ses valeurs d'entrée, et qu'elle ne produit pas
-d'effets secondaires. La fonction doit toujours renvoyer le même résultat lorsqu'elle reçoit les mêmes entrées.
+Une fonction est pure si sa valeur de retour n’est déterminée que par ses valeurs d’entrée, et qu’elle ne produit pas
+d’effets secondaires. La fonction doit toujours renvoyer le même résultat lorsqu’elle reçoit les mêmes entrées.
 
 ```js
 const saluer = (nom) => `Salut, ${nom}`
@@ -284,7 +284,7 @@ const saluer = () => `Salut, ${window.name}`
 saluer() // "Salut, Brianne"
 ```
 
-La sortie de l'exemple ci-dessus dépend de données stockées en dehors de la fonction...
+La sortie de l’exemple ci-dessus dépend de données stockées en dehors de la fonction...
 
 ```js
 let salutation
@@ -297,7 +297,7 @@ saluer('Brianne')
 salutation // "Salut, Brianne"
 ```
 
-... et celui-ci modifie l'état en dehors de la fonction.
+... et celui-ci modifie l’état en dehors de la fonction.
 
 ## Effets de bord
 
@@ -314,7 +314,7 @@ console.log('Les entrées-sorties sont un effet de bord !')
 
 ## Idempotence
 
-Une fonction est idempotente si, quand on l'applique à nouveau à son résultat, elle ne produit pas un résultat
+Une fonction est idempotente si, quand on l’applique à nouveau à son résultat, elle ne produit pas un résultat
 différent.
 
 ```js
@@ -327,9 +327,9 @@ sort(sort(sort([2, 1])))
 
 ## Programmation tacite (point-free style)
 
-La programmation tacite, aussi connu sous le nom de _point-free style_, est une manière d'écrire une fonction en
-n'identifiant pas explicitement les arguments utilisés. Ce style de programmation requiert généralement les notions
-de [curryfication](#curryfication) ou de [fonctions d'ordre supérieur](#fonction-dordre-supérieur).
+La programmation tacite, aussi connu sous le nom de _point-free style_, est une manière d’écrire une fonction en
+n’identifiant pas explicitement les arguments utilisés. Ce style de programmation requiert généralement les notions
+de [curryfication](#curryfication) ou de [fonctions d’ordre supérieur](#fonction-dordre-supérieur).
 
 ```js
 // Étant donné
@@ -347,11 +347,11 @@ const incrementerTout2 = map(ajouter(1))
 
 Les définitions de fonctions _point-free_ ressemblent à des affectations normales sans `function` ou `=>`. Il convient
 de mentionner que les fonctions _point-free_ ne sont pas nécessairement meilleures que leurs homologues
-non-_point-free_, car elles peuvent être plus difficiles à comprendre lorsqu'elles sont complexes.
+non-_point-free_, car elles peuvent être plus difficiles à comprendre lorsqu’elles sont complexes.
 
 ## Prédicat
 
-Un prédicat est une fonction qui retourne vrai ou faux pour une valeur donnée. Une utilisation courante d'un prédicat
+Un prédicat est une fonction qui retourne vrai ou faux pour une valeur donnée. Une utilisation courante d’un prédicat
 est la fonction utilisée pour filtrer un tableau.
 
 ```js
@@ -362,9 +362,9 @@ const predicat = (a) => a > 2
 
 ## Contrats
 
-Un contrat spécifie les obligations et les garanties de comportement qu'une fonction ou une expression doit respecter
-lors de son exécution. C'est un ensemble de règles qui s'appliquent aux entrées et sorties d'une fonction ou d'une
-expression. Des erreurs sont levées quand le contrat n'est pas respecté.
+Un contrat spécifie les obligations et les garanties de comportement qu’une fonction ou une expression doit respecter
+lors de son exécution. C’est un ensemble de règles qui s’appliquent aux entrées et sorties d’une fonction ou d’une
+expression. Des erreurs sont levées quand le contrat n’est pas respecté.
 
 ```js
 // Definie le contrat : int -> boolean
@@ -381,16 +381,16 @@ ajouterUn('une chaine') // Contrat non respecté : attendu int -> boolean
 
 ## Catégorie
 
-Une catégorie, dans la théorie des catégories, est un ensemble composé d'objets et des morphismes entre eux.
+Une catégorie, dans la théorie des catégories, est un ensemble composé d’objets et des morphismes entre eux.
 En programmation, les types représentent généralement les objets et les fonctions représentent les morphismes.
 
-Pour qu'une catégorie soit valide, trois règles doivent être respectées :
+Pour qu’une catégorie soit valide, trois règles doivent être respectées :
 
-1. Un morphisme d'identité, qui mappe un objet à lui-même, doit exister.
-   Si `a` est un objet d'une catégorie,
+1. Un morphisme d’identité, qui mappe un objet à lui-même, doit exister.
+   Si `a` est un objet d’une catégorie,
    alors il doit y avoir une fonction de `a -> a`.
 2. Les morphismes doivent pouvoir être composés.
-   Si `a`, `b`, and `c` sont des objets d'une catégorie,
+   Si `a`, `b`, and `c` sont des objets d’une catégorie,
    `f` est un morphisme de `a -> b` et `g` est un morphisme de `b -> c`,
    alors `g(f(x))` doit être équivalent à `(g • f)(x)`.
 3. La composition doit être associative.
@@ -399,7 +399,7 @@ Pour qu'une catégorie soit valide, trois règles doivent être respectées :
 Puisque ces règles régissent la composition à un niveau très abstrait, la théorie des catégories est excellente pour
 découvrir de nouvelles façons de composer des choses.
 
-À titre d'exemple, nous pouvons définir une catégorie Max en tant que classe
+À titre d’exemple, nous pouvons définir une catégorie Max en tant que classe
 
 ```js
 
@@ -435,7 +435,7 @@ Tout ce qui peut être assigné à une variable.
 
 ```js
 5
-Object.freeze({ nom: 'John', age: 30 }) // La fonction `freeze` renforce l'immutabilité.
+Object.freeze({ nom: 'John', age: 30 }) // La fonction `freeze` renforce l’immutabilité.
 ;(a) => a
 ;[1]
 undefined
@@ -450,10 +450,10 @@ const cinq = 5
 const john = Object.freeze({ name: 'John', age: 30 })
 ```
 
-Les constantes sont [référentiellement transparentes](#transparence-référentielle). Cela veut dire qu'une constante peut
-être remplacée par la valeur qu'elle représente sans que le résultat soit modifié.
+Les constantes sont [référentiellement transparentes](#transparence-référentielle). Cela veut dire qu’une constante peut
+être remplacée par la valeur qu’elle représente sans que le résultat soit modifié.
 
-Avec les deux constantes ci-dessus, l'expression suivante renverra toujours `true`.
+Avec les deux constantes ci-dessus, l’expression suivante renverra toujours `true`.
 
 ```js
 john.age + cinq === ({ name: 'John', age: 30 }).age + 5
@@ -490,7 +490,7 @@ Constante(1).chain(n => Constante(n + 1)) // => Constante(1)
 Un objet qui implémente une fonction `map` qui prend en paramètre une fonction qui sera exécutée sur son contenu. Un
 foncteur doit respecter deux règles :
 
-__Préserver l'identité__
+__Préserver l’identité__
 
 ```js
 objet.map(x => x)
@@ -512,7 +512,7 @@ objet.map(f).map(g)
 
 (où `f`, `g` sont des fonctions composables arbitraires).
 
-L'implémentation de référence d'[Option](#option) est un foncteur car il satisfait ces deux règles :
+L’implémentation de référence d’[Option](#option) est un foncteur car il satisfait ces deux règles :
 
 ```js
 some(1).map(x => x) // = some(1)
@@ -530,7 +530,7 @@ some(1).map(f).map(g) // = some(3)
 
 ## Foncteur pointé
 
-Un objet avec une fonction `of` qui stocke _n'importe_ quelle valeur.
+Un objet avec une fonction `of` qui stocke _n’importe_ quelle valeur.
 
 ES2015 a ajouté `Array.of`, transformant ainsi les tableaux en foncteur pointé.
 
@@ -540,25 +540,25 @@ Array.of(1) // [1]
 
 ## Relèvement
 
-Le relèvement est l'action de prendre une valeur et de la mettre dans un objet tel qu'un [foncteur](#foncteur-pointé).
-Si vous relevez une fonction dans un [foncteur applicatif](#foncteur-applicatif), vous pouvez l'appliquer aux valeurs
+Le relèvement est l’action de prendre une valeur et de la mettre dans un objet tel qu’un [foncteur](#foncteur-pointé).
+Si vous relevez une fonction dans un [foncteur applicatif](#foncteur-applicatif), vous pouvez l’appliquer aux valeurs
 qui se trouvent également dans ce foncteur.
 
-Certaines implémentations ont une fonction appelée `lift` ou `liftA2` pour faciliter l'exécution de fonctions sur des
+Certaines implémentations ont une fonction appelée `lift` ou `liftA2` pour faciliter l’exécution de fonctions sur des
 foncteurs.
 
 ```js
-const liftA2 = (f) => (a, b) => a.map(f).ap(b) // note: c'est bien `ap` et non `map`.
+const liftA2 = (f) => (a, b) => a.map(f).ap(b) // note: c’est bien `ap` et non `map`.
 
 const mult = a => b => a * b
 
-const multRelevé = liftA2(mult) // cette nouvelle fonction s'appliquer à des foncteurs comme array
+const multRelevé = liftA2(mult) // cette nouvelle fonction s’appliquer à des foncteurs comme array
 
 multRelevé([1, 2], [3]) // [3, 6]
 liftA2(a => b => a + b)([1, 2], [3, 4]) // [4, 5, 5, 6]
 ```
 
-Relever une fonction à un argument et l'appliquer fait la même chose que `map`.
+Relever une fonction à un argument et l’appliquer fait la même chose que `map`.
 
 ```js
 const incrementer = (x) => x + 1
@@ -567,7 +567,7 @@ lift(incrementer)([2]) // [3]
 ;[2].map(incrementer) // [3]
 ```
 
-Relever de simples valeurs peut consister à créer uniquement l'objet.
+Relever de simples valeurs peut consister à créer uniquement l’objet.
 
 ```js
 Array.of(1) // => [1]
@@ -585,13 +585,13 @@ const saluer = () => 'Bonjour le monde !'
 ```
 
 Toute invocation de `saluer()` peut être remplacée par `Bonjour le monde !`, donc `saluer` est référentiellement
-transparente. Cela ne serait pas le cas si `saluer` dépendait d'un état externe comme de la configuration ou un appel
+transparente. Cela ne serait pas le cas si `saluer` dépendait d’un état externe comme de la configuration ou un appel
 à une base de données. Voir aussi [Fonction pure](#fonction-pure)
 et [Raisonnement équationnel](#raisonnement-équationnel).
 
 ## Raisonnement équationnel
 
-Lorsqu'une application est composée d'expressions et dépourvue d'effets secondaires, des affirmations peuvent être
+Lorsqu’une application est composée d’expressions et dépourvue d’effets secondaires, des affirmations peuvent être
 déduites de ses parties. Vous pouvez également être sûr des détails de votre programme sans avoir à parcourir toutes les
 fonctions.
 
@@ -600,8 +600,8 @@ const grainesDansChiens = compose(pouletsDansChiens, grainesDansPoulets)
 const grainesDansChats = compose(chiensDansChats, grainesDansChiens)
 ```
 
-Dans l'exemple ci-dessus, si vous savez que `pouletsDansChiens` et `grainesDansPoulets` sont [pures](#fonction-pure),
-alors vous savez que la composition est également pure. Les choses peuvent être poussées un peu plus loin lorsque l'on
+Dans l’exemple ci-dessus, si vous savez que `pouletsDansChiens` et `grainesDansPoulets` sont [pures](#fonction-pure),
+alors vous savez que la composition est également pure. Les choses peuvent être poussées un peu plus loin lorsque l’on
 en sait plus sur les fonctions (associativité, commutativité, idempotence, etc...).
 
 ## Lambda
@@ -616,7 +616,7 @@ Une fonction anonyme qui peut être traitée comme une valeur.
 ;(a) => a + 1
 ```
 
-Les lambdas sont souvent utilisées en tant qu'arguments de fonctions d'ordre supérieur.
+Les lambdas sont souvent utilisées en tant qu’arguments de fonctions d’ordre supérieur.
 
 ```js
 ;[1, 2].map((a) => a + 1) // [2, 3]
@@ -635,14 +635,14 @@ Une branche des mathématiques qui utilise les fonctions pour créer un
 
 ## Combinateur fonctionnel
 
-Une fonction d'ordre supérieur, généralement curryfiée, qui renvoie une nouvelle fonction modifiée d'une manière ou
-d'une autre.
+Une fonction d’ordre supérieur, généralement curryfiée, qui renvoie une nouvelle fonction modifiée d’une manière ou
+d’une autre.
 
 Les combinateurs fonctionnels sont souvent utilisés en [programmation tacite](#programmation-tacite-point-free-style)
 pour écrire des programmes particulièrement concis.
 
 ```js
-// Le combinateur "C" prend une fonction curryfiée à deux arguments et en renvoie une nouvelle qui appelle la fonction d'origine avec les arguments inversés.
+// Le combinateur "C" prend une fonction curryfiée à deux arguments et en renvoie une nouvelle qui appelle la fonction d’origine avec les arguments inversés.
 const C = (f) => (a) => (b) => f(b)(a)
 
 const diviser = (a) => (b) => a / b
@@ -659,9 +659,9 @@ donne aussi des liens vers plus de références.
 
 ## Évaluation paresseuse
 
-L'évaluation paresseuse est un mécanisme qui retarde l'évaluation d'une expression jusqu'à ce que sa valeur soit
+L’évaluation paresseuse est un mécanisme qui retarde l’évaluation d’une expression jusqu’à ce que sa valeur soit
 nécessaire. Dans les langages fonctionnels, cela permet des structures telles que les listes infinies, qui ne seraient
-normalement pas disponibles dans un langage impératif où l'enchaînement des commandes est important.
+normalement pas disponibles dans un langage impératif où l’enchaînement des commandes est important.
 
 ```js
 const rand = function * () {
@@ -673,7 +673,7 @@ const rand = function * () {
 
 ```js
 const randIter = rand()
-randIter.next() // Chaque exécution donne une valeur aléatoire, l'expression est évaluée au besoin.
+randIter.next() // Chaque exécution donne une valeur aléatoire, l’expression est évaluée au besoin.
 ```
 
 ## Monoïde
@@ -681,18 +681,18 @@ randIter.next() // Chaque exécution donne une valeur aléatoire, l'expression e
 Un objet avec une fonction qui « combine » cet objet avec un autre du même type ([demi-groupe](#demi-groupe)) qui a de
 plus une valeur neutre.
 
-Un exemple de monoïde simple est l'addition de nombres :
+Un exemple de monoïde simple est l’addition de nombres :
 
 ```js
 1 + 1 // 2
 ```
 
-Dans ce cas, le nombre est l'objet et `+` est la fonction.
+Dans ce cas, le nombre est l’objet et `+` est la fonction.
 
-Lorsqu'une valeur est combinée avec la valeur neutre, le résultat doit être la valeur d'origine. La fonction doit
+Lorsqu’une valeur est combinée avec la valeur neutre, le résultat doit être la valeur d’origine. La fonction doit
 également être commutative dans ce cas.
 
-La valeur neutre pour l'addition est `0` :
+La valeur neutre pour l’addition est `0` :
 
 ```js
 1 + 0 // 1
@@ -700,7 +700,7 @@ La valeur neutre pour l'addition est `0` :
 1 + 0 === 0 + 1
 ```
 
-Il est également nécessaire que le regroupement des opérations n'influe pas sur le résultat (associativité) :
+Il est également nécessaire que le regroupement des opérations n’influe pas sur le résultat (associativité) :
 
 ```js
 1 + (2 + 3) === (1 + 2) + 3 // true
@@ -718,7 +718,7 @@ La valeur neutre est alors un tableau vide `[]` :
 ;[1, 2].concat([]) // [1, 2]
 ```
 
-À titre de contre-exemple, la soustraction ne forme pas de monoïde car il n'y a pas de valeur neutre commutative :
+À titre de contre-exemple, la soustraction ne forme pas de monoïde car il n’y a pas de valeur neutre commutative :
 
 ```js
 0 - 4 === 4 - 0 // false
@@ -727,7 +727,7 @@ La valeur neutre est alors un tableau vide `[]` :
 ## Monade
 
 Une monade est un objet avec les fonctions [`of`](#foncteur-pointé) et `chain`. `chain` est comme [`map`](#foncteur)
-sauf qu'il désimbrique les objets imbriqués résultants.
+sauf qu’il désimbrique les objets imbriqués résultants.
 
 ```js
 // Implémentation
@@ -742,8 +742,8 @@ Array.of('chat,chien', 'poisson,oiseau').chain((a) => a.split(',')) // ['chat', 
 Array.of('chat,chien', 'poisson,oiseau').map((a) => a.split(',')) // [['chat', 'chien'], ['poisson', 'oiseau']]
 ```
 
-`of` est également connu sous le nom de `return` dans d'autres langages fonctionnels. `chain` est par ailleurs connu
-sous le nom de `flatmap` ou `bind` dans d'autres langages.
+`of` est également connu sous le nom de `return` dans d’autres langages fonctionnels. `chain` est par ailleurs connu
+sous le nom de `flatmap` ou `bind` dans d’autres langages.
 
 ## Comonade
 
@@ -761,7 +761,7 @@ const CoIdentité = (v) => ({
 })
 ```
 
-`extract` extrait une valeur d'un foncteur :
+`extract` extrait une valeur d’un foncteur :
 
 ```js
 CoIdentité(1).extract() // 1
@@ -776,7 +776,7 @@ CoIdentité(1).extend((co) => co.extract() + 1) // CoIdentité(2)
 ## Composition de Kleisi
 
 Une opération pour composer deux fonctions qui retournent des [monades](#monade) (flèches de Kleisli) quand elles ont
-des types compatibles. En Haskell, il s'agit de l'opérateur `>=>`.
+des types compatibles. En Haskell, il s’agit de l’opérateur `>=>`.
 
 En utilisant [Option](#option) :
 
@@ -805,11 +805,11 @@ Ceci fonctionne car :
 
 * [Option](#option) est une [monade](#monade)
 * `validatePositive` et `safeParseNum` renvoient le même type de monade (Option).
-* Le type d'argument de `validatePositive` correspond au retour non encapsulé de `safeParseNum`.
+* Le type d’argument de `validatePositive` correspond au retour non encapsulé de `safeParseNum`.
 
 ## Foncteur applicatif
 
-Un foncteur applicatif est un objet avec une fonction `ap`. `ap` applique une fonction de l'objet à une valeur d'un
+Un foncteur applicatif est un objet avec une fonction `ap`. `ap` applique une fonction de l’objet à une valeur d’un
 autre objet du même type.
 
 ```js
@@ -818,11 +818,11 @@ Array.prototype.ap = function (xs) {
   return this.reduce((acc, f) => acc.concat(xs.map(f)), [])
 }
 
-// Exemple d'utilisation
+// Exemple d’utilisation
 ;[(a) => a + 1].ap([1]) // [2]
 ```
 
-C'est utile quand vous avez deux objets et que vous souhaitez appliquer une fonction binaire à leurs contenus.
+C’est utile quand vous avez deux objets et que vous souhaitez appliquer une fonction binaire à leurs contenus.
 
 ```js
 // Tableaux que vous souhaitez fusionner
@@ -843,14 +843,14 @@ ajoutsPartiels.ap(arg2) // [5, 6, 7, 8]
 
 ## Morphisme
 
-Une relation entre des objets au sein d'une [catégorie](#catégorie). En programmation fonctionnelle, toutes les
+Une relation entre des objets au sein d’une [catégorie](#catégorie). En programmation fonctionnelle, toutes les
 fonctions sont des morphismes.
 
 ### Homomorphisme
 
-Une fonction où l'entrée et la sortie partagent une même propriété structurelle.
+Une fonction où l’entrée et la sortie partagent une même propriété structurelle.
 
-Par exemple, dans un homomorphisme [monoïde](#monoïde), l'entrée et la sortie sont des monoïdes même si leurs types sont
+Par exemple, dans un homomorphisme [monoïde](#monoïde), l’entrée et la sortie sont des monoïdes même si leurs types sont
 différents.
 
 ```js
@@ -863,10 +863,10 @@ const convertir = (a) => a.join(', ')
 * array est un monoïde - il possède une opération `concat` et une valeur neutre (`[]`),
 * string est un monoïde - il possède une opération `concat` et une valeur neutre (`''`).
 
-Ainsi, un homomorphisme se rapporte à la propriété qui vous intéresse dans l'entrée et la sortie d'une fonction de
+Ainsi, un homomorphisme se rapporte à la propriété qui vous intéresse dans l’entrée et la sortie d’une fonction de
 transformation.
 
-Les [endomorphismes](#endomorphisme) et les [isomorphismes](#isomorphisme) sont des exemples d'homomorphisme.
+Les [endomorphismes](#endomorphisme) et les [isomorphismes](#isomorphisme) sont des exemples d’homomorphisme.
 
 __Pour aller plus loin__
 
@@ -874,7 +874,7 @@ __Pour aller plus loin__
 
 ### Endomorphisme
 
-Une fonction où le type de l'entrée est identique à celui de sortie.
+Une fonction où le type de l’entrée est identique à celui de sortie.
 
 ```js
 // majuscule :: String -> String
@@ -888,7 +888,7 @@ const decrementer = (x) => x - 1
 
 Un morphisme pour lequel il existe un morphisme inverse. Ce type de morphismes préserve la structure des objets.
 
-Par exemple, des coordonnées 2D peuvent être stockées sous forme de tableau (`[2,3]`) ou d'objet (`{x: 2, y: 3}`).
+Par exemple, des coordonnées 2D peuvent être stockées sous forme de tableau (`[2,3]`) ou d’objet (`{x: 2, y: 3}`).
 
 ```js
 // Fonctions de conversions
@@ -899,7 +899,7 @@ coordsVersPaire(paireVersCoords([1, 2])) // [1, 2]
 paireVersCoords(coordsVersPaire({ x: 1, y: 2 })) // {x: 1, y: 2}
 ```
 
-Les isomorphismes sont aussi des [homomorphismes](#homomorphisme) puisque les types d'entrée et de sortie sont
+Les isomorphismes sont aussi des [homomorphismes](#homomorphisme) puisque les types d’entrée et de sortie sont
 réversibles.
 
 ### Catamorphisme
@@ -917,8 +917,8 @@ somme([1, 2, 3, 4, 5]) // 15
 ### Anamorphisme
 
 Une fonction qui construit une structure en appliquant de manière répétée une autre fonction à son argument. `unfold`
-est un exemple qui génère un tableau par à partir d'une fonction et d'une valeur initiale. C'est le contraire d'
-un [catamorphisme](#catamorphisme) : un anamorphisme construit une structure et le catamorphisme la décompose.
+est un exemple qui génère un tableau par à partir d’une fonction et d’une valeur initiale. C’est le contraire
+d’un [catamorphisme](#catamorphisme) : un anamorphisme construit une structure et le catamorphisme la décompose.
 
 ```js
 const deplier = (f, valeurInitiale) => {
@@ -940,7 +940,7 @@ compteARebour(5) // [5, 4, 3, 2, 1]
 
 ### Hylomorphisme
 
-Une fonction récursive composée d'un [anamorphisme](#anamorphisme) suivi d'un [catamorphisme](#catamorphisme).
+Une fonction récursive composée d’un [anamorphisme](#anamorphisme) suivi d’un [catamorphisme](#catamorphisme).
 
 ```js
 const sommeJusquaX = (x) => somme(compteARebour(x))
@@ -949,7 +949,7 @@ sommeJusquaX(5) // 15
 
 ### Paramorphisme
 
-Une fonction similaire `reduceRight`, bien qu'il y ait une différence :
+Une fonction similaire `reduceRight`, bien qu’il y ait une différence :
 
 Dans un paramorphisme, les arguments de votre réducteur sont la valeur actuelle, la réduction de toutes les valeurs
 précédentes et la liste des valeurs qui ont formé cette réduction.
@@ -975,18 +975,18 @@ const suffixes = liste => paramorphisme(
 suffixes([1, 2, 3, 4, 5]) // [[2, 3, 4, 5], [3, 4, 5], [4, 5], [5], []]
 ```
 
-Le troisième paramètre du réducteur (dans l'exemple ci-dessus, `[x, ... xs]`) donne une sorte d'historique de ce qui à
+Le troisième paramètre du réducteur (dans l’exemple ci-dessus, `[x, ... xs]`) donne une sorte d’historique de ce qui à
 conduit à la valeur `accumulateur` actuelle.
 
 ### Apomorphisme
 
-Le contraire du paramorphisme, tout comme l'anamorphisme est le contraire du catamorphisme. Avec le paramorphisme,
-l'accès à l'accumulateur et à ce qui a été accumulé sont conservés. L'apomorphisme permet de _déplier (`unfold`)_ et
+Le contraire du paramorphisme, tout comme l’anamorphisme est le contraire du catamorphisme. Avec le paramorphisme,
+l’accès à l’accumulateur et à ce qui a été accumulé sont conservés. L’apomorphisme permet de _déplier (`unfold`)_ et
 laisse la possibilité de retourner une valeur plus tôt.
 
 ## Setoïde
 
-Un objet qui a une fonction `equals` qui peut être utilisée pour le comparer à d'autres objets du même type.
+Un objet qui a une fonction `equals` qui peut être utilisée pour le comparer à d’autres objets du même type.
 
 Pour faire de `array` un setoïde :
 
@@ -1010,7 +1010,7 @@ Array.prototype.equals = function (arr) {
 
 ## Demi-groupe
 
-Un demi-groupe (aussi appelé semi-groupe), est un objet doté d'une fonction `concat` qui permet de le combiner avec un
+Un demi-groupe (aussi appelé semi-groupe), est un objet doté d’une fonction `concat` qui permet de le combiner avec un
 autre objet du même type.
 
 ```js
@@ -1019,7 +1019,7 @@ autre objet du même type.
 
 ## Foldable
 
-Un objet doté d'une fonction `reduce` qui applique une fonction à un accumulateur et à chaque élément du tableau (de
+Un objet doté d’une fonction `reduce` qui applique une fonction à un accumulateur et à chaque élément du tableau (de
 gauche à droite) pour le réduire à une seule valeur.
 
 ```js
@@ -1030,7 +1030,7 @@ somme([1, 2, 3]) // 6
 ## Lentille
 
 Une lentille (lens en anglais) est une structure (souvent un objet ou une fonction) qui associe un _getter_ et un
-_setter_ non mutable et est utilisé sur d'autres structures.
+_setter_ non mutable et est utilisé sur d’autres structures.
 
 ```js
 // En utilisant les [lentilles de Ramda (en)](http://ramdajs.com/docs/#lens)
@@ -1042,7 +1042,7 @@ const lentilleSurLeNom = R.lens(
 )
 ```
 
-Le fait d'avoir des accesseurs pour une structure donnée permet quelques fonctionnalités clés.
+Le fait d’avoir des accesseurs pour une structure donnée permet quelques fonctionnalités clés.
 
 ```js
 const personne = { nom: 'Gertrude Blanch' }
@@ -1057,11 +1057,11 @@ R.set(lentilleNom, 'Shafi Goldwasser', personne) // {nom: 'Shafi Goldwasser'}
 R.over(lentilleNom, majuscule, personne) // {nom: 'GERTRUDE BLANCH'}
 ```
 
-Les lentilles sont aussi composable. Cela permet d'effectuer facilement des mises à jour de données profondément
+Les lentilles sont aussi composable. Cela permet d’effectuer facilement des mises à jour de données profondément
 imbriquées.
 
 ```js
-// Cette lentille se concentre sur le premier élément d'un tableau non vide
+// Cette lentille se concentre sur le premier élément d’un tableau non vide
 const lentillePremierElement = R.lens(
   // getter sur le premier élément du tableau
   xs => xs[0],
@@ -1104,8 +1104,8 @@ Si une fonction accepte une autre fonction comme argument, elle est placée entr
 const appeler = (f) => (x) => f(x)
 ```
 
-Les lettres `a`, `b`, `c`, `d` sont utilisée pour signifier que l'argument peut être de n'importe quel type. La version
-suivante de `map` prend une fonction qui transforme une valeur d'un type `a` en un autre type `b`, un tableau de valeurs
+Les lettres `a`, `b`, `c`, `d` sont utilisée pour signifier que l’argument peut être de n’importe quel type. La version
+suivante de `map` prend une fonction qui transforme une valeur d’un type `a` en un autre type `b`, un tableau de valeurs
 de type `a`, et retourne un tableau de valeurs de type `b`.
 
 ```js
@@ -1115,21 +1115,21 @@ const map = (f) => (liste) => liste.map(f)
 
 __Pour aller plus loin__
 
-* [Ramda's type signatures (en)](https://github.com/ramda/ramda/wiki/Type-Signatures)
+* [Ramda’s type signatures (en)](https://github.com/ramda/ramda/wiki/Type-Signatures)
 * [Mostly Adequate Guide (en)](https://drboolean.gitbooks.io/mostly-adequate-guide/content/ch7.html#whats-your-type)
 * [What is Hindley-Milner? (en)](http://stackoverflow.com/a/399392/22425) sur Stack Overflow
 
 ## Type algébrique de données
 
-Un type composite fabriqué à partir de l'assemblage d'autres types. Deux classes communes de types algébriques sont
+Un type composite fabriqué à partir de l’assemblage d’autres types. Deux classes communes de types algébriques sont
 les [sommes](#types-somme) et les [produits](#types-produit).
 
 ### Types somme
 
-Un type somme est l'union de deux types l'un avec l'autre. On l'appelle ainsi car le nombre de valeurs possibles dans le
-type résultant est la somme des types d'entrée.
+Un type somme est l’union de deux types l’un avec l’autre. On l’appelle ainsi car le nombre de valeurs possibles dans le
+type résultant est la somme des types d’entrée.
 
-JavaScript n'a pas de types somme, mais on peut néanmoins utiliser les `Set`s le simuler :
+JavaScript n’a pas de types somme, mais on peut néanmoins utiliser les `Set`s le simuler :
 
 ```js
 // Imaginez que plutôt que des ensembles ici, nous avons des types qui ne peuvent prendre que ces valeurs.
@@ -1143,22 +1143,22 @@ const valeursDeLogiqueFaible = new Set([...bools, ...halfTrue])
 Les types somme sont parfois appelés _types union_, _unions discriminées_ ou _unions étiquetées_.
 
 Il existe [plusieurs](https://github.com/paldepind/union-type) [bibliothèques](https://github.com/puffnfresh/daggy) en
-JavaScript qui facilitent la définition et l'utilisation des types somme.
+JavaScript qui facilitent la définition et l’utilisation des types somme.
 
 Flow défini [des types union](https://flow.org/en/docs/types/unions/) et TypeScript
 [des énumérations](https://www.typescriptlang.org/docs/handbook/enums.html) pour jouer ce rôle.
 
 ### Types produit
 
-Un type produit combine des types d'une manière que vous connaissez probablement mieux :
+Un type produit combine des types d’une manière que vous connaissez probablement mieux :
 
 ```js
 // point :: (Number, Number) -> {x: Number, y: Number}
 const point = (x, y) => ({ x, y })
 ```
 
-L'exemple précédent est ce qu'on appelle un produit car l'ensemble des valeurs possibles de la structure de données est
-le produit des différentes valeurs. De nombreux languages ont un type tuple qui est la formulation la plus simple d'un
+L’exemple précédent est ce qu’on appelle un produit car l’ensemble des valeurs possibles de la structure de données est
+le produit des différentes valeurs. De nombreux languages ont un type tuple qui est la formulation la plus simple d’un
 type produit.
 
 __Pour aller plus loin__
@@ -1167,7 +1167,7 @@ __Pour aller plus loin__
 
 ## Option
 
-L'option est un [type somme](#types-somme) qui encapsule deux cas souvent appelés `Some` et `None`. Les options sont
+L’option est un [type somme](#types-somme) qui encapsule deux cas souvent appelés `Some` et `None`. Les options sont
 utiles avec des fonctions qui peuvent ne pas renvoyer de valeur.
 
 ```js
@@ -1220,10 +1220,10 @@ getPrixImbrique({ item: { price: 9.99 } }) // Some(9.99)
 
 En programmation fonctionnelle, une fonction (ou expression lambda) `f :: A => B` est une expression avec un seul
 argument immuable de type `A`et une seule valeur de retour de type `B`. La valeur de retour dépend entièrement de
-l'argument, ce qui rend la fonction [référentiellement transparente](#transparence-référentielle). Cela implique donc
+l’argument, ce qui rend la fonction [référentiellement transparente](#transparence-référentielle). Cela implique donc
 que la fonction ne produit aucun [effet de bord](#effets-de-bord) caché. Une fonction est donc [pure](#fonction-pure)
 par définition. Ces propriétés rendent les fonctions agréables à manipuler : elles sont complètement déterministes et
-ainsi prévisibles. Les fonctions permettent d'utiliser le code comme des données, en faisant abstraction du
+ainsi prévisibles. Les fonctions permettent d’utiliser le code comme des données, en faisant abstraction du
 comportement :
 
 ```js
@@ -1235,18 +1235,18 @@ const fois2 = n => n * 2
 
 ## Fonction partielle
 
-Une fonction partielle est une [function](#fonction) qui n'est pas définie pour tous les arguments - elle peut renvoyer
+Une fonction partielle est une [function](#fonction) qui n’est pas définie pour tous les arguments - elle peut renvoyer
 un résultat inattendu ou ne jamais se terminer. Les fonctions partielles ajoutent de la surcharge cognitive, elles sont
-plus difficiles à appréhender et peuvent entraîner des erreurs d'exécution.
+plus difficiles à appréhender et peuvent entraîner des erreurs d’exécution.
 
 ```js
-// exemple 1 : somme d'une liste
+// exemple 1 : somme d’une liste
 // somme :: [Number] -> Number
 const somme = nombres => nombres.reduce((a, b) => a + b)
 somme([1, 2, 3]) // 6
 sum([]) // TypeError: Reduce of empty array with no initial value
 
-// exemple 2 : récupération du premier élément d'une liste
+// exemple 2 : récupération du premier élément d’une liste
 // premier :: [A] -> A
 const premier = a => a[0]
 premier([42]) // 42
@@ -1268,33 +1268,33 @@ repeter(-1)(console.log) // RangeError: Maximum call stack size exceeded
 ### Manipuler des fonctions partielles
 
 Les fonctions partielles sont dangereuses et doivent être utilisées avec prudence. Vous pouvez en effet obtenir un
-résultat inattendu (erroné), rencontrer des erreurs d'exécution, ou même s'exécuter indéfiniment lorsque vous les
+résultat inattendu (erroné), rencontrer des erreurs d’exécution, ou même s’exécuter indéfiniment lorsque vous les
 utilisez. Connaitre et traiter tous ces cas aux limites peut donc devenir très fastidieux.
 
 Heureusement, il est possible de transformer une fonction partielle en fonction traditionnelle (ou fonction totale).
 On peut en effet utiliser des valeurs par défaut ou des garde-fous pour traiter les entrées pour lesquelles la fonction
-partielle n'a pas de comportement défini. En utilisant par exemple le type ['Option'](#Option), nous pouvons obtenir
+partielle n’a pas de comportement défini. En utilisant par exemple le type [Option](#Option), nous pouvons obtenir
 soit `Some(value)` ou `None` là où la fonction se serait comportée de manière inattendue.
 
 ```js
-// exemple 1: somme d'une liste
+// exemple 1: somme d’une liste
 // on peut fournir une valeur par défaut afin que la fonction renvoie toujours un résultat
 // somme :: [Number] -> Number
 const somme = arr => arr.reduce((a, b) => a + b, 0)
 somme([1, 2, 3]) // 6
 somme([]) // 0
 
-// exemple 2: récupération du premier élément d'une liste
+// exemple 2: récupération du premier élément d’une liste
 // on peut utiliser le type Option
 // premier :: [A] -> Option A
 const premier = a => a.length ? Some(a[0]) : None()
 premier([42]).map(a => console.log(a)) // 42
-premier([]).map(a => console.log(a)) // console.log ne s'exécutera pas
+premier([]).map(a => console.log(a)) // console.log ne s’exécutera pas
 // et avec le pire scénario
 premier([[42]]).map(a => console.log(a[0])) // 42
-premier([]).map(a => console.log(a[0])) // console.log ne s'exécutera pas, et il n'y aura pas d'erreur
+premier([]).map(a => console.log(a[0])) // console.log ne s’exécutera pas, et il n’y aura pas d’erreur
 // De plus, vous saurez grâce au type de retour (Option) que vous devez utiliser `.map`
-// pour accèder à la valeur de retour et vous n'oublierez plus de vérifier l'argument
+// pour accèder à la valeur de retour et vous n’oublierez plus de vérifier l’argument
 // car cela devient obligatoire.
 
 // exemple 3: repéter une fonction N fois
@@ -1308,14 +1308,14 @@ repeter(3)(console.log)
 repeter(-1)(console.log) // ne fera rien
 ```
 
-En rendant vos fonctions partielles totales, les erreurs d'exécution peuvent être évités. Toujours renvoyer une valeur
-permet de plus d'obtenir du code qui est à la fois plus facile à comprendre et à maintenir.
+En rendant vos fonctions partielles totales, les erreurs d’exécution peuvent être évités. Toujours renvoyer une valeur
+permet de plus d’obtenir du code qui est à la fois plus facile à comprendre et à maintenir.
 
 ## Fonction totale
 
-Une fonction qui renvoie un résultat valide pour toutes les valeurs d'entrées possibles. Les fonctions totales
-s'opposent aux [fonctions partielles](#fonction-partielle) qui peuvent générer des erreurs, renvoyer un résultat
-inattendu ou s'exécuter indéfiniment.
+Une fonction qui renvoie un résultat valide pour toutes les valeurs d’entrées possibles. Les fonctions totales
+s’opposent aux [fonctions partielles](#fonction-partielle) qui peuvent générer des erreurs, renvoyer un résultat
+inattendu ou s’exécuter indéfiniment.
 
 ## Bibliothèques de programmation fonctionnelle en JavaScript
 
@@ -1340,5 +1340,5 @@ inattendu ou s'exécuter indéfiniment.
 ---
 
 __P.S:__ Merci à toutes les personnes ayant contribué
-[au dépôt d'origine](https://github.com/hemanth/functional-programming-jargon/graphs/contributors) comme à
+[au dépôt d’origine](https://github.com/hemanth/functional-programming-jargon/graphs/contributors) comme à
 [ce dépôt](https://github.com/marcwrobel/functional-programming-jargon-fr/graphs/contributors) !
