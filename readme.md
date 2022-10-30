@@ -80,7 +80,7 @@ __Table des matières__
 * [Fonction](#fonction)
 * [Fonction partielle](#fonction-partielle)
   * [Manipuler des fonctions partielles](#manipuler-des-fonctions-partielles)
-* [Total Function](#total-function)
+* [Fonction totale](#fonction-totale)
 * [Functional Programming Libraries in JavaScript](#functional-programming-libraries-in-javascript)
 
 
@@ -1187,7 +1187,7 @@ repeter(-1)(console.log) // RangeError: Maximum call stack size exceeded
 
 ### Manipuler des fonctions partielles
 
-Les fonctions partielles sont dangereuses et doivent être utilisées avec prudence. Vous pouvez en effet obtenir un résultat inattendu (erroné), rencontrer des erreurs d'exécution, ou même ne jamais avoir de résultat lorsque vous les utilisez. Connaitre et traiter tous ces cas aux limites peut donc devenir très fastidieux.
+Les fonctions partielles sont dangereuses et doivent être utilisées avec prudence. Vous pouvez en effet obtenir un résultat inattendu (erroné), rencontrer des erreurs d'exécution, ou même s'exécuter indéfiniment lorsque vous les utilisez. Connaitre et traiter tous ces cas aux limites peut donc devenir très fastidieux.
 
 Heureusement, il est possible de transformer une fonction partielle en fonction traditionnelle (ou fonction totale).
 On peut en effet utiliser des valeurs par défaut ou des garde-fous pour traiter les entrées pour lesquelles la fonction partielle n'a pas de comportement défini.
@@ -1227,9 +1227,9 @@ repeter(-1)(console.log) // ne fera rien
 
 En rendant vos fonctions partielles totales, les erreurs d'exécution peuvent être évités. Toujours renvoyer une valeur permet de plus d'obtenir du code qui est à la fois plus facile à comprendre et à maintenir.
 
-## Total Function
+## Fonction totale
 
-A function which returns a valid result for all inputs defined in its type. This is as opposed to [Partial Functions](#fonction-partielle) which may throw an error, return an unexpected result, or fail to terminate.
+Une fonction qui renvoie un résultat valide pour toutes les valeurs d'entrées possibles. Les fonctions totales s'opposent aux [fonctions partielles](#fonction-partielle) qui peuvent générer des erreurs, renvoyer un résultat inattendu ou s'exécuter indéfiniment.
 
 ## Functional Programming Libraries in JavaScript
 
