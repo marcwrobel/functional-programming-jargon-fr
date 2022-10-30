@@ -81,7 +81,7 @@ __Table des matières__
 * [Fonction partielle](#fonction-partielle)
   * [Manipuler des fonctions partielles](#manipuler-des-fonctions-partielles)
 * [Fonction totale](#fonction-totale)
-* [Functional Programming Libraries in JavaScript](#functional-programming-libraries-in-javascript)
+* [Bibliothèques de programmation fonctionnelle en JavaScript](#bibliothèques-de-programmation-fonctionnelle-en-javascript)
 
 
 <!-- /RM -->
@@ -1231,7 +1231,7 @@ En rendant vos fonctions partielles totales, les erreurs d'exécution peuvent ê
 
 Une fonction qui renvoie un résultat valide pour toutes les valeurs d'entrées possibles. Les fonctions totales s'opposent aux [fonctions partielles](#fonction-partielle) qui peuvent générer des erreurs, renvoyer un résultat inattendu ou s'exécuter indéfiniment.
 
-## Functional Programming Libraries in JavaScript
+## Bibliothèques de programmation fonctionnelle en JavaScript
 
 * [mori](https://github.com/swannodette/mori)
 * [Immutable](https://github.com/facebook/immutable-js/)
