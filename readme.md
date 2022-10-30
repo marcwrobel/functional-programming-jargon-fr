@@ -1253,4 +1253,4 @@ Une fonction qui renvoie un résultat valide pour toutes les valeurs d'entrées 
 
 ---
 
-__P.S:__ Ce dépôt est populaire en raison de toutes ces merveilleuses [contributions](https://github.com/hemanth/functional-programming-jargon/graphs/contributors) !
+__P.S:__ Merci à toutes les personnes ayant contribué [au dépôt d'origine](https://github.com/hemanth/functional-programming-jargon/graphs/contributors) comme à [ce dépôt](https://github.com/marcwrobel/functional-programming-jargon-fr/graphs/contributors) !
