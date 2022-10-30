@@ -1093,12 +1093,13 @@ __Pour aller plus loin__
 * [Théorie des ensembles](https://fr.wikipedia.org/wiki/Th%C3%A9orie_des_ensembles) sur Wikipédia
 
 ## Option
-Option is a [sum type](#sum-type) with two cases often called `Some` and `None`.
 
-Option is useful for composing functions that might not return a value.
+L'option est un [type somme](#types-somme) qui encapsule deux cas souvent appelés `Some` et `None`.
+
+Les options sont utiles avec des fonctions qui peuvent ne pas renvoyer de valeur.
 
 ```js
-// Naive definition
+// Définition naïve
 
 const Some = (v) => ({
   val: v,
@@ -1119,27 +1120,29 @@ const None = () => ({
   }
 })
 
-// maybeProp :: (String, {a}) -> Option a
-const maybeProp = (key, obj) => typeof obj[key] === 'undefined' ? None() : Some(obj[key])
+// optionnel :: (String, {a}) -> Option a
+const optionnel = (key, obj) => typeof obj[key] === 'undefined' ? None() : Some(obj[key])
 ```
-Use `chain` to sequence functions that return `Option`s
+
+Utilisez `chain` pour enchaîner des fonctions qui retournent des `Option`s:
+
 ```js
 
-// getItem :: Cart -> Option CartItem
-const getItem = (cart) => maybeProp('item', cart)
+// getArticle :: Panier -> Option Article
+const getArticle = (panier) => optionnel('article', panier)
 
-// getPrice :: Item -> Option Number
-const getPrice = (item) => maybeProp('price', item)
+// getPrix :: Article -> Option Number
+const getPrix = (article) => optionnel('prix', article)
 
-// getNestedPrice :: cart -> Option a
-const getNestedPrice = (cart) => getItem(cart).chain(getPrice)
+// getPrixImbrique :: cart -> Option a
+const getPrixImbrique = (panier) => getArticle(panier).chain(getPrix)
 
-getNestedPrice({}) // None()
-getNestedPrice({ item: { foo: 1 } }) // None()
-getNestedPrice({ item: { price: 9.99 } }) // Some(9.99)
+getPrixImbrique({}) // None()
+getPrixImbrique({ item: { foo: 1 } }) // None()
+getPrixImbrique({ item: { price: 9.99 } }) // Some(9.99)
 ```
 
-`Option` is also known as `Maybe`. `Some` is sometimes called `Just`. `None` is sometimes called `Nothing`.
+`Option` est aussi connu sous le nom `Maybe`. `Some` est parfois appelé `Just`. `None` est parfois appelé `Nothing`.
 
 ## Function
 A **function** `f :: A => B` is an expression - often called arrow or lambda expression - with **exactly one (immutable)** parameter of type `A` and **exactly one** return value of type `B`. That value depends entirely on the argument, making functions context-independent, or [referentially transparent](#transparence-référentielle). What is implied here is that a function must not produce any hidden [side effects](#effets-de-bord) - a function is always [pure](#fonction-pure), by definition. These properties make functions pleasant to work with: they are entirely deterministic and therefore predictable. Functions enable working with code as data, abstracting over behaviour:
