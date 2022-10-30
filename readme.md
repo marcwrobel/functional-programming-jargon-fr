@@ -73,9 +73,9 @@ __Table des matières__
 * [Foldable](#foldable)
 * [Lentille](#lentille)
 * [Signatures de type](#signatures-de-type)
-* [Algebraic data type](#algebraic-data-type)
-  * [Sum type](#sum-type)
-  * [Product type](#product-type)
+* [Type algébrique de données](#type-algébrique-de-données)
+  * [Types somme](#types-somme)
+  * [Types produit](#types-produit)
 * [Option](#option)
 * [Function](#function)
 * [Partial function](#partial-function)
@@ -1053,39 +1053,44 @@ __Pour aller plus loin__
 * [Mostly Adequate Guide (en)](https://drboolean.gitbooks.io/mostly-adequate-guide/content/ch7.html#whats-your-type)
 * [What is Hindley-Milner? (en)](http://stackoverflow.com/a/399392/22425) sur Stack Overflow
 
-## Algebraic data type
-A composite type made from putting other types together. Two common classes of algebraic types are [sum](#sum-type) and [product](#product-type).
+## Type algébrique de données
 
-### Sum type
-A Sum type is the combination of two types together into another one. It is called sum because the number of possible values in the result type is the sum of the input types.
+Un type composite fabriqué à partir de l'assemblage d'autres types. Deux classes communes de types algébriques sont les [sommes](#types-somme) et les [produits](#types-produit).
 
-JavaScript doesn't have types like this but we can use `Set`s to pretend:
+### Types somme
+
+Un type somme est l'union de deux types l'un avec l'autre. On l'appelle ainsi car le nombre de valeurs possibles dans le type résultant est la somme des types d'entrée.
+
+JavaScript n'a pas de types somme, mais on peut néanmoins utiliser les `Set`s le simuler :
+
 ```js
-// imagine that rather than sets here we have types that can only have these values
+// Imaginez que plutôt que des ensembles ici, nous avons des types qui ne peuvent prendre que ces valeurs.
 const bools = new Set([true, false])
 const halfTrue = new Set(['half-true'])
 
-// The weakLogic type contains the sum of the values from bools and halfTrue
-const weakLogicValues = new Set([...bools, ...halfTrue])
+// Le type LogiqueFaible contient la somme des valeurs de bools et halfTrue
+const valeursDeLogiqueFaible = new Set([...bools, ...halfTrue])
 ```
 
-Sum types are sometimes called union types, discriminated unions, or tagged unions.
+Les types somme sont parfois appelés _types union_, _unions discriminées_ ou _unions étiquetées_.
 
-There's a [couple](https://github.com/paldepind/union-type) [libraries](https://github.com/puffnfresh/daggy) in JS which help with defining and using union types.
+Il existe [plusieurs](https://github.com/paldepind/union-type) [bibliothèques](https://github.com/puffnfresh/daggy) en JavaScript qui facilitent la définition et l'utilisation des types somme.
 
-Flow includes [union types](https://flow.org/en/docs/types/unions/) and TypeScript has [Enums](https://www.typescriptlang.org/docs/handbook/enums.html) to serve the same role.
+Flow défini [des types union](https://flow.org/en/docs/types/unions/) et TypeScript [des énumérations](https://www.typescriptlang.org/docs/handbook/enums.html) pour jouer ce rôle.
 
-### Product type
+### Types produit
 
-A **product** type combines types together in a way you're probably more familiar with:
+Un type produit combine des types d'une manière que vous connaissez probablement mieux :
 
 ```js
 // point :: (Number, Number) -> {x: Number, y: Number}
 const point = (x, y) => ({ x, y })
 ```
-It's called a product because the total possible values of the data structure is the product of the different values. Many languages have a tuple type which is the simplest formulation of a product type.
 
-See also [Set theory](https://en.wikipedia.org/wiki/Set_theory).
+L'exemple précédent est ce qu'on appelle un produit car l'ensemble des valeurs possibles de la structure de données est le produit des différentes valeurs. De nombreux languages ont un type tuple qui est la formulation la plus simple d'un type produit.
+
+__Pour aller plus loin__
+* [Théorie des ensembles](https://fr.wikipedia.org/wiki/Th%C3%A9orie_des_ensembles) sur Wikipédia
 
 ## Option
 Option is a [sum type](#sum-type) with two cases often called `Some` and `None`.
