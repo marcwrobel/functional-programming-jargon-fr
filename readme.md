@@ -1053,7 +1053,7 @@ const suffixes = liste => paramorphisme(
 suffixes([1, 2, 3, 4, 5]) // [[2, 3, 4, 5], [3, 4, 5], [4, 5], [5], []]
 ```
 
-Le troisième paramètre du réducteur (dans l’exemple ci-dessus, `[x, ... xs]`) donne une sorte d’historique de ce qui à
+Le troisième paramètre du réducteur (dans l’exemple ci-dessus, `[x, ... xs]`) donne une sorte d’historique de ce qui a
 conduit à la valeur `accumulateur` actuelle.
 
 __Pour aller plus loin__
@@ -1324,10 +1324,9 @@ getPrixImbrique({ item: { price: 9.99 } }) // Some(9.99)
 En programmation fonctionnelle, une fonction (ou expression lambda) `f :: A => B` est une expression avec un seul
 argument immuable de type `A`et une seule valeur de retour de type `B`. La valeur de retour dépend entièrement de
 l’argument, ce qui rend la fonction [référentiellement transparente](#transparence-référentielle). Cela implique donc
-que la fonction ne produit aucun [effet de bord](#effets-de-bord) caché. Une fonction est donc [pure](#fonction-pure)
-par définition. Ces propriétés rendent les fonctions agréables à manipuler : elles sont complètement déterministes et
-ainsi prévisibles. Les fonctions permettent d’utiliser le code comme des données, en faisant abstraction du
-comportement :
+que la fonction ne produit aucun [effet de bord](#effets-de-bord) caché et qu'elle est [pure](#fonction-pure) par
+définition. Ces propriétés rendent les fonctions agréables à manipuler : elles sont complètement déterministes et ainsi
+prévisibles. Les fonctions permettent d’utiliser le code comme des données, en faisant abstraction du comportement :
 
 ```js
 // fois2 :: Number -> Number
@@ -1442,6 +1441,6 @@ erreurs, renvoyer un résultat inattendu ou s’exécuter indéfiniment.
 
 ---
 
-__P.S:__ Merci à toutes les personnes ayant contribué
+__P.S.__ : Merci à toutes les personnes ayant contribué
 [au dépôt d’origine](https://github.com/hemanth/functional-programming-jargon/graphs/contributors) comme à
 [ce dépôt](https://github.com/marcwrobel/functional-programming-jargon-fr/graphs/contributors) !
