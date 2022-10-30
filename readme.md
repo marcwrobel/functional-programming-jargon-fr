@@ -77,7 +77,7 @@ __Table des matières__
   * [Types somme](#types-somme)
   * [Types produit](#types-produit)
 * [Option](#option)
-* [Function](#function)
+* [Fonction](#fonction)
 * [Partial function](#partial-function)
   * [Dealing with partial functions](#dealing-with-partial-functions)
 * [Total Function](#total-function)
@@ -1144,14 +1144,15 @@ getPrixImbrique({ item: { price: 9.99 } }) // Some(9.99)
 
 `Option` est aussi connu sous le nom `Maybe`. `Some` est parfois appelé `Just`. `None` est parfois appelé `Nothing`.
 
-## Function
-A **function** `f :: A => B` is an expression - often called arrow or lambda expression - with **exactly one (immutable)** parameter of type `A` and **exactly one** return value of type `B`. That value depends entirely on the argument, making functions context-independent, or [referentially transparent](#transparence-référentielle). What is implied here is that a function must not produce any hidden [side effects](#effets-de-bord) - a function is always [pure](#fonction-pure), by definition. These properties make functions pleasant to work with: they are entirely deterministic and therefore predictable. Functions enable working with code as data, abstracting over behaviour:
+## Fonction
+
+En programmation fonctionnelle, une fonction (ou expression lambda) `f :: A => B` est une expression avec un seul argument immuable de type `A`et une seule valeur de retour de type `B`. La valeur de retour dépend entièrement de l'argument, ce qui rend la fonction [référentiellement transparente](#transparence-référentielle). Cela implique donc que la fonction ne produit aucun [effet de bord](#effets-de-bord) caché. Une fonction est donc [pure](#fonction-pure) par définition. Ces propriétés rendent les fonctions agréables à manipuler : elles sont complètement déterministes et ainsi prévisibles. Les fonctions permettent d'utiliser le code comme des données, en faisant abstraction du comportement :
 
 ```js
-// times2 :: Number -> Number
-const times2 = n => n * 2
+// fois2 :: Number -> Number
+const fois2 = n => n * 2
 
-;[1, 2, 3].map(times2) // [2, 4, 6]
+;[1, 2, 3].map(fois2) // [2, 4, 6]
 ```
 
 ## Partial function
