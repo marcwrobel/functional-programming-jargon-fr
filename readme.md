@@ -72,7 +72,7 @@ __Table des matières__
 * [Demi-groupe](#demi-groupe)
 * [Foldable](#foldable)
 * [Lentille](#lentille)
-* [Type Signatures](#type-signatures)
+* [Signatures de type](#signatures-de-type)
 * [Algebraic data type](#algebraic-data-type)
   * [Sum type](#sum-type)
   * [Product type](#product-type)
@@ -1018,40 +1018,40 @@ Autres implémentations :
 * [partial.lenses (en)](https://github.com/calmm-js/partial.lenses)
 * [nanoscope (en)](http://www.kovach.me/nanoscope/)
 
-## Type Signatures
+## Signatures de type
 
-Often functions in JavaScript will include comments that indicate the types of their arguments and return values.
+Souvent, les fonctions en JavaScript incluent des commentaires qui indiquent les types de leurs arguments et les valeurs de retour.
 
-There's quite a bit of variance across the community, but they often follow the following patterns:
-
-```js
-// functionName :: firstArgType -> secondArgType -> returnType
-
-// add :: Number -> Number -> Number
-const add = (x) => (y) => x + y
-
-// increment :: Number -> Number
-const increment = (x) => x + 1
-```
-
-If a function accepts another function as an argument it is wrapped in parentheses.
+Les pratiques varient beaucoup au sein de la communauté, mais ils suivent souvent les modèles suivants :
 
 ```js
-// call :: (a -> b) -> a -> b
-const call = (f) => (x) => f(x)
+// nomFonction :: premierType -> secondType -> typeDeRetour
+
+// ajouter :: Number -> Number -> Number
+const ajouter = (x) => (y) => x + y
+
+// incrementer :: Number -> Number
+const incrementer = (x) => x + 1
 ```
 
-The letters `a`, `b`, `c`, `d` are used to signify that the argument can be of any type. The following version of `map` takes a function that transforms a value of some type `a` into another type `b`, an array of values of type `a`, and returns an array of values of type `b`.
+Si une fonction accepte une autre fonction comme argument, elle est placée entre parenthèses :
+
+```js
+// appeler :: (a -> b) -> a -> b
+const appeler = (f) => (x) => f(x)
+```
+
+Les lettres `a`, `b`, `c`, `d` sont utilisée pour signifier que l'argument peut être de n'importe quel type. La version suivante de `map` prend une fonction qui transforme une valeur d'un type `a` en un autre type `b`, un tableau de valeurs de type `a`, et retourne un tableau de valeurs de type `b`.
 
 ```js
 // map :: (a -> b) -> [a] -> [b]
-const map = (f) => (list) => list.map(f)
+const map = (f) => (liste) => liste.map(f)
 ```
 
-__Further reading__
-* [Ramda's type signatures](https://github.com/ramda/ramda/wiki/Type-Signatures)
-* [Mostly Adequate Guide](https://drboolean.gitbooks.io/mostly-adequate-guide/content/ch7.html#whats-your-type)
-* [What is Hindley-Milner?](http://stackoverflow.com/a/399392/22425) on Stack Overflow
+__Pour aller plus loin__
+* [Ramda's type signatures (en)](https://github.com/ramda/ramda/wiki/Type-Signatures)
+* [Mostly Adequate Guide (en)](https://drboolean.gitbooks.io/mostly-adequate-guide/content/ch7.html#whats-your-type)
+* [What is Hindley-Milner? (en)](http://stackoverflow.com/a/399392/22425) sur Stack Overflow
 
 ## Algebraic data type
 A composite type made from putting other types together. Two common classes of algebraic types are [sum](#sum-type) and [product](#product-type).
