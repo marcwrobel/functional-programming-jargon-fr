@@ -139,7 +139,7 @@ appelée avec `y` pour retourner la somme.
 
 __Pour aller plus loin__
 
-* [Closures (Fermetures)](https://developer.mozilla.org/fr/docs/Web/JavaScript/Closures) sur MDN 
+* [Closures (Fermetures)](https://developer.mozilla.org/fr/docs/Web/JavaScript/Closures) sur MDN
 * [Lambda Vs Closure (en)](http://stackoverflow.com/questions/220658/what-is-the-difference-between-a-closure-and-a-lambda)
 * [JavaScript Closures highly voted discussion (en)](http://stackoverflow.com/questions/111102/how-do-javascript-closures-work)
 
@@ -1174,7 +1174,7 @@ Autres implémentations :
 ## Signatures de type
 
 Souvent, les fonctions en JavaScript incluent des commentaires qui indiquent les types de leurs arguments et les valeurs
-de retour. C'est leur signature de type (_type signature_ en anglais). 
+de retour. C'est leur signature de type (_type signature_ en anglais).
 
 Les pratiques varient beaucoup au sein de la communauté, mais ils suivent souvent les modèles suivants :
 
