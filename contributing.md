@@ -8,7 +8,7 @@ préalable être intégrées à
 avant d’être reprises sur ce dépôt.
 
 Le contenu de ce dépôt se base sur le commit
-[hemanth/functional-programming-jargon@69d1b25](https://github.com/hemanth/functional-programming-jargon/commit/69d1b25308f0ff0c5e98234d5d6ccea26aa13388)
+[hemanth/functional-programming-jargon@50722a4](https://github.com/hemanth/functional-programming-jargon/commit/50722a4a74cd741b9b03e1807c62a79e5674d4ca)
 .
 
 # Conventions
