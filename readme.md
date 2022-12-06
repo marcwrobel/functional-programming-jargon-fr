@@ -63,7 +63,7 @@ __Table des matières__
 * [Monoïde](#monoïde)
 * [Monade](#monade)
 * [Comonade](#comonade)
-* [Composition de Kleisi](#composition-de-kleisi)
+* [Composition de Kleisli](#composition-de-kleisli)
 * [Foncteur applicatif](#foncteur-applicatif)
 * [Morphisme](#morphisme)
   * [Homomorphisme](#homomorphisme)
@@ -820,9 +820,9 @@ __Pour aller plus loin__
 
 * [Comonads (en)](https://en.wikipedia.org/wiki/Monad_(category_theory)#Comonads) sur Wikipédia
 
-## Composition de Kleisi
+## Composition de Kleisli
 
-Une composition de Kleisi (_Kleisi composition_ en anglais) est une opération pour composer deux fonctions qui
+Une composition de Kleisli (_Kleisli composition_ en anglais) est une opération pour composer deux fonctions qui
 retournent des [monades](#monade) (flèches de Kleisli) quand elles ont des types compatibles. En Haskell, il s’agit de
 l’opérateur `>=>`.
 
@@ -1124,7 +1124,7 @@ Une lentille (_lens_ en anglais) est une structure (souvent un objet ou une fonc
 _setter_ non mutable et est utilisé sur d’autres structures.
 
 ```js
-// En utilisant les [lentilles de Ramda (en)](http://ramdajs.com/docs/#lens)
+// En utilisant les [lentilles de Ramda (en)](https://ramdajs.com/docs/#lens)
 const lentilleSurLeNom = R.lens(
   // getter pour la propriété nom
   (obj) => obj.nom,
