@@ -1,7 +1,8 @@
 # Le jargon de la programmation fonctionnelle
 
 > Ce document est une traduction française de
-> [hemanth/functional-programming-jargon](https://github.com/hemanth/functional-programming-jargon).
+> [hemanth/functional-programming-jargon](https://github.com/hemanth/functional-programming-jargon)
+> basée sur le commit [50722a4](https://github.com/hemanth/functional-programming-jargon/commit/50722a4a74cd741b9b03e1807c62a79e5674d4ca).
 
 La programmation fonctionnelle offre de nombreux avantages et sa popularité n’a cessé d’augmenter en conséquence.
 Cependant, chaque paradigme de programmation défini son propre jargon et la programmation fonctionnelle ne fait pas
