@@ -2,7 +2,7 @@
 
 > Ce document est une traduction française de
 > [hemanth/functional-programming-jargon](https://github.com/hemanth/functional-programming-jargon)
-> basée sur le commit [50722a4](https://github.com/hemanth/functional-programming-jargon/commit/50722a4a74cd741b9b03e1807c62a79e5674d4ca).
+> basée sur le commit [2a3b998](https://github.com/hemanth/functional-programming-jargon/commit/2a3b998).
 
 La programmation fonctionnelle offre de nombreux avantages et sa popularité n’a cessé d’augmenter en conséquence.
 Cependant, chaque paradigme de programmation défini son propre jargon et la programmation fonctionnelle ne fait pas
@@ -588,7 +588,7 @@ const mult = a => b => a * b
 const multRelevé = liftA2(mult) // cette nouvelle fonction s’applique à des foncteurs comme Array
 
 multRelevé([1, 2], [3]) // [3, 6]
-liftA2(a => b => a + b)([1, 2], [3, 4]) // [4, 5, 5, 6]
+liftA2(a => b => a + b)([1, 2], [30, 40]) // [31, 41, 32, 42]
 ```
 
 Relever une fonction à un argument et l’appliquer fait la même chose que `map`.
