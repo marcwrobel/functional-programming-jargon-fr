@@ -2,7 +2,7 @@
 
 > Ce document est une traduction française de
 > [hemanth/functional-programming-jargon](https://github.com/hemanth/functional-programming-jargon)
-> basée sur le commit [2a3b998](https://github.com/hemanth/functional-programming-jargon/commit/2a3b998).
+> basée sur le commit [ce4cc3e](https://github.com/hemanth/functional-programming-jargon/commit/ce4cc3e).
 
 La programmation fonctionnelle offre de nombreux avantages et sa popularité n’a cessé d’augmenter en conséquence.
 Cependant, chaque paradigme de programmation défini son propre jargon et la programmation fonctionnelle ne fait pas
@@ -552,8 +552,8 @@ some(1).map(x => x) // = some(1)
 // est composable
 const f = x => x + 1
 const g = x => x * 2
-some(1).map(x => g(f(x))) // = some(3)
-some(1).map(f).map(g) // = some(3)
+some(1).map(x => g(f(x))) // = some(4)
+some(1).map(f).map(g) // = some(4)
 ```
 
 __Pour aller plus loin__
