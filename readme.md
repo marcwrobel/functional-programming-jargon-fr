@@ -2,7 +2,7 @@
 
 > Ce document est une traduction française de
 > [hemanth/functional-programming-jargon](https://github.com/hemanth/functional-programming-jargon)
-> basée sur le commit [ce4cc3e](https://github.com/hemanth/functional-programming-jargon/commit/ce4cc3e).
+> basée sur le commit [ce4cc3e](https://github.com/hemanth/functional-programming-jargon/commit/08a48ff).
 
 La programmation fonctionnelle offre de nombreux avantages et sa popularité n’a cessé d’augmenter en conséquence.
 Cependant, chaque paradigme de programmation défini son propre jargon et la programmation fonctionnelle ne fait pas
@@ -547,13 +547,13 @@ L’implémentation de référence d’[Option](#option) est un foncteur, en eff
 
 ```js
 // préserve l’identité
-some(1).map(x => x) // = some(1)
+Some(1).map(x => x) // = Some(1)
 
 // est composable
 const f = x => x + 1
 const g = x => x * 2
-some(1).map(x => g(f(x))) // = some(4)
-some(1).map(f).map(g) // = some(4)
+Some(1).map(x => g(f(x))) // = Some(4)
+Some(1).map(f).map(g) // = Some(4)
 ```
 
 __Pour aller plus loin__
@@ -833,11 +833,11 @@ En JavaScript, en utilisant [les options](#option) :
 // safeParseNum :: String -> Option Number
 const safeParseNum = (b) => {
   const n = parseNumber(b)
-  return isNaN(n) ? none() : some(n)
+  return isNaN(n) ? None() : Some(n)
 }
 
 // validatePositive :: Number -> Option Number
-const validatePositive = (a) => a > 0 ? some(a) : none()
+const validatePositive = (a) => a > 0 ? Some(a) : None()
 
 // kleisliCompose :: Monad M => ((b -> M c), (a -> M b)) -> a -> M c
 const kleisliCompose = (g, f) => (x) => f(x).chain(g)
