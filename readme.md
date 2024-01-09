@@ -1347,7 +1347,7 @@ plus difficiles à appréhender et peuvent entraîner des erreurs d’exécution
 // somme :: [Number] -> Number
 const somme = nombres => nombres.reduce((a, b) => a + b)
 somme([1, 2, 3]) // 6
-sum([]) // TypeError: Reduce of empty array with no initial value
+somme([]) // TypeError: Reduce of empty array with no initial value
 
 // exemple 2 : récupération du premier élément d’une liste
 // premier :: [A] -> A
